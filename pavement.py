@@ -11,7 +11,7 @@ from socket import gethostname
 sys.path.append(os.getcwd())
 
 home_dir = os.getcwd()
-project_name = "sigcse2017"
+project_name = "py101"
 
 master_url = None
 doctrees = None
@@ -29,27 +29,27 @@ if master_url is None:
 
 
 master_app = 'runestone'
-serving_dir = "./build/sigcse2017"
+serving_dir = "./build/py101"
 dest = "../../static"
 
 options(
     sphinx = Bunch(docroot=".",),
 
     build = Bunch(
-        builddir="./build/sigcse2017",
+        builddir="./build/py101",
         sourcedir="_sources",
-        outdir="./build/sigcse2017",
+        outdir="./build/py101",
         confdir=".",
         project_name=project_name,
-        template_args={'course_id': 'sigcse2017',
+        template_args={'course_id': 'py101',
                        'login_required':'false',
                        'appname':master_app,
                        'loglevel': 10,
                        'course_url':master_url,
-                       'use_services': 'true',
+                       'use_services': 'false',
                        'python3': 'true',
                        'dburl': '',
-                       'basecourse': 'sigcse2017'
+                       'basecourse': 'py101'
                         }
     )
 )
