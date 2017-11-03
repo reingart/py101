@@ -6,8 +6,10 @@ Programación Python I Interactivo
 `Material para las clases de FI UBA 75.40 - Algoritmos y programación I <https://github.com/gsorianob/fiuba-python>`_
 (Gonzalo Soriano)
 
-Adaptado y convertido a libro interactivo para la Diplomatura en Software Libre por Mariano Reingart
+Adaptado y convertido a libro interactivo para la `Diplomatura en Software
+Libre <http://www.softwarelibre.com.ar/diplomatura/>`_  por Mariano Reingart
 
+Repositorio: https://github.com/reingart/py101
 
 CLASE 1: Introducción
 :::::::::::::::::::::
