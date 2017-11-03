@@ -9,358 +9,231 @@
    -->
 
 Tipos de datos compuestos
--------------------------
+=========================
 
 Listas
-~~~~~~
+------
 
 En Python podemos guardar varios elementos usando
-`listas <https://docs.python.org/2/tutorial/introduction.html#lists>`__
+`listas <https://docs.python.org/3/tutorial/introduction.html#lists>`__
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
 
-    print 'Lista de números:'
-    lista_de_numeros = [1, 6, 9, 5, 2]
-    print lista_de_numeros
-    print type(lista_de_numeros)
-    
-    # Pero en ningún lugar dice que la lista tiene que ser sólo
-    # de números, por lo que podría definir mi lista_de_cosas
-    # que tenga los mismos números que tenía antes y un string
-    # en el medio:
-    print '\nLista de cosas:'
-    string = 'cadena_de_caracteres'
-    lista_de_cosas = [1, 6, string, 9, 5, 2]
-    print lista_de_cosas
-    
-    lista_de_cosas.append(string)
-    print lista_de_cosas
-    print type(lista_de_cosas)
-
-
-
-.. parsed-literal::
-
-    Lista de números:
-    [1, 6, 9, 5, 2]
-    <type 'list'>
-    
-    Lista de cosas:
-    [1, 6, 'cadena_de_caracteres', 9, 5, 2]
-    [1, 6, 'cadena_de_caracteres', 9, 5, 2, 'cadena_de_caracteres']
-    <type 'list'>
+    lista_de_numeros = [1, 6, 3, 9, 5, 2]
+    print(lista_de_numeros)
+    print(type(lista_de_numeros))
 
 
 Si se quiere saber si un número se encuentra en una lista o no, es muy
 simple, sólo hay que usar el operador **in**:
 
-.. code:: python
+.. activecode:: py_02
+    :nocodelens:
+    :include: py_01
 
-    print 'El {} esta en {}?: {}'.format(5, lista_de_numeros, 5 in lista_de_numeros)
-    print 'El {} esta en {}?: {}'.format(7, lista_de_numeros, 7 in lista_de_numeros)
-
-
-.. parsed-literal::
-
-    El 5 esta en [1, 6, 9, 5, 2]?: True
-    El 7 esta en [1, 6, 9, 5, 2]?: False
+    print('El %s esta en %s?: %s' % (5, lista_de_numeros, 5 in lista_de_numeros))
+    print('El %s esta en %s?: %s' % (7, lista_de_numeros, 7 in lista_de_numeros))
 
 
 El operador **in** también funciona para strings (es *case sensitive*):
 
-.. code:: python
+.. activecode:: py_03
+    :nocodelens:
 
-    print 'mundo in "Hola mundo": ', 'mundo' in "Hola mundo"
-    print 'MUNDO in "Hola mundo": ', 'MUNDO' in "Hola mundo"
-
-
-.. parsed-literal::
-
-    mundo in "Hola mundo":  True
-    MUNDO in "Hola mundo":  False
+    print('mundo in "Hola mundo": ', 'mundo' in "Hola mundo")
+    print('MUNDO in "Hola mundo": ', 'MUNDO' in "Hola mundo")
 
 
 A diferencia de los strings, en las listas si podemos cambiar un
 elemento cualquiera:
 
-.. code:: python
+.. activecode:: py_04
+    :nocodelens:
 
     lista_de_numeros = [1, 6, 3, 9, 5, 2]
-    print lista_de_numeros
+    print(lista_de_numeros)
     lista_de_numeros[3] = 152
-    print lista_de_numeros
-
-
-.. parsed-literal::
-
-    [1, 6, 3, 9, 5, 2]
-    [1, 6, 3, 152, 5, 2]
+    print(lista_de_numeros)
 
 
 En ningún momento dijimos que la lista era de enteros, por lo que
 tranquilamente podemos guardar elementos de distintos tipos de datos
 
-.. code:: python
+.. activecode:: py_05
+    :nocodelens:
 
-    lista_de_cosas = [2, 5.5, 'letras', [1, 2, 3], 
-                      ('tupla', 'de', 'strings')]
-    print lista_de_cosas
-
-
-.. parsed-literal::
-
-    [2, 5.5, 'letras', [1, 2, 3], ('tupla', 'de', 'strings')]
+    lista_de_cosas = [2, 5.5, 'letras', [1, 2, 3], ('tupla', 'de', 'strings')]
+    print(lista_de_cosas)
 
 
 Para eliminar un elemento sólo tenemos que usar la función **del** e
 indicar la posición.
 
-.. code:: python
+.. activecode:: py_06
+    :nocodelens:
 
-    lista_de_cosas = [2, 5.5, 'letras', [1, 2, 3],
-                      ('tupla', 'de', 'strings')]
-    print 'Lista de cosas:', lista_de_cosas
+    lista_de_cosas = [2, 5.5, 'letras', [1, 2, 3], ('tupla', 'de', 'strings')]
+    print('Lista de cosas:', lista_de_cosas)
     
     del lista_de_cosas[3]
-    print 'Después de eliminar la posición 3:', lista_de_cosas
+    print('Después de eliminar la posición 3:', lista_de_cosas)
 
 
-.. parsed-literal::
+.. activecode:: py_07
+    :nocodelens:
 
-    Lista de cosas: [2, 5.5, 'letras', [1, 2, 3], ('tupla', 'de', 'strings')]
-    Después de eliminar la posición 3: [2, 5.5, 'letras', ('tupla', 'de', 'strings')]
-
-
-.. code:: python
-
-    lista_de_numeros = [1, 2]
+    lista_de_numeros = []
     
     if lista_de_numeros:
-        print 'la lista tiene elementos'
+        print('la lista tiene elementos')
     else:
-        print 'la lista no tiene elementos'
-
-
-
-.. parsed-literal::
-
-    la lista tiene elementos
+        print('la lista no tiene elementos')
 
 
 Y con las listas también se pueden hacer *slices*:
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
+    :include: py_05
 
-    print 'primer elemento:', lista_de_cosas[0]
+    print('primer elemento:', lista_de_cosas[0])
     ultimo = lista_de_cosas[-1]
-    print 'último:', ultimo
-    print 'del_segundo_al_ultimo_sin_incluirlo:', lista_de_cosas[1:4]
-    print 'del_segundo_al_ultimo_sin_incluirlo:', lista_de_cosas[1:-1]
-    print 'del_segundo_al_ultimo_incluyendolo:', lista_de_cosas[1:]
-
-
-.. parsed-literal::
-
-    primer elemento: 2
-    último: ('tupla', 'de', 'strings')
-    del_segundo_al_ultimo_sin_incluirlo: [5.5, 'letras', ('tupla', 'de', 'strings')]
-    del_segundo_al_ultimo_sin_incluirlo: [5.5, 'letras']
-    del_segundo_al_ultimo_incluyendolo: [5.5, 'letras', ('tupla', 'de', 'strings')]
+    print('último:', ultimo)
+    print('del_segundo_al_ultimo_sin_incluirlo:', lista_de_cosas[1:4])
+    print('del_segundo_al_ultimo_sin_incluirlo:', lista_de_cosas[1:-1])
+    print('del_segundo_al_ultimo_incluyendolo:', lista_de_cosas[1:])
 
 
 Existe una función llamada *range* que crea permite crear listas de
 números:
 
-.. code:: python
+.. activecode:: py_09
+    :nocodelens:
 
-    print range.__doc__
-    print
-    print 'Ejemplos:'
-    print '  range(15):', range(15)
-    print '  range(15)[2:9]:', range(15)[2:9]
-    print '  range(15)[2:9:3]:', range(15)[2:9:3]
-    print '  range(2,9):', range(2,9)
-    print '  range(2,9,3):', range(2,9,3)
-
-
-.. parsed-literal::
-
-    range(stop) -> list of integers
-    range(start, stop[, step]) -> list of integers
-    
-    Return a list containing an arithmetic progression of integers.
-    range(i, j) returns [i, i+1, i+2, ..., j-1]; start (!) defaults to 0.
-    When step is given, it specifies the increment (or decrement).
-    For example, range(4) returns [0, 1, 2, 3].  The end point is omitted!
-    These are exactly the valid indices for a list of 4 elements.
-    
-    Ejemplos:
-      range(15): [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-      range(15)[2:9]: [2, 3, 4, 5, 6, 7, 8]
-      range(15)[2:9:3]: [2, 5, 8]
-      range(2,9): [2, 3, 4, 5, 6, 7, 8]
-      range(2,9,3): [2, 5, 8]
+    print('Ejemplos:')
+    print('  range(15):', range(15))
+    print('  range(15)[2:9]:', range(15)[2:9])
+    print('  range(15)[2:9:3]:', range(15)[2:9:3])
+    print('  range(2,9):', range(2,9))
+    print('  range(2,9,3):', range(2,9,3))
 
 
 Tuplas
-~~~~~~
+------
 
 Las
-`tuplas <https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences>`__
+`tuplas <https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences>`__
 son listas inmutables, es decir, que no se pueden modificar. Si no se
 pueden modificar, ¿para qué existen?. Porque crearlas es mucho más
 eficiente que crear listas y en muchas ocasiones, como con las
 constantes, queremos crear variables que no se modifiquen.
 
-.. code:: python
+.. activecode:: py_10
+    :nocodelens:
 
     tupla = (1, 2, 3, 4)  # Se usa paréntesis en lugar de corchetes
-    print tupla
+    print(tupla)
     
     tupla = tupla[2:4]
-    print tupla
-    print type(tupla)
-
-
-.. parsed-literal::
-
-    (1, 2, 3, 4)
-    (3, 4)
-    <type 'tuple'>
+    print(tupla)
+    print(type(tupla))
 
 
 Diccionarios
-~~~~~~~~~~~~
+------------
 
 El equivalente a los registros de Pascal serían los
-`diccionarios <https://docs.python.org/2/tutorial/datastructures.html#dictionaries>`__,
+`diccionarios <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>`__,
 pero éstos también ofrecen mayor flexibilidad:
 
-.. code:: python
+.. activecode:: py_11
+    :nocodelens:
 
-    print 'Podría usar los registros para guardar los datos de un alumno'
+    registros_con_campos_variables = {'campo1': 12, 
+                                      'campo2': 'valor campo2'}
+    print(registros_con_campos_variables)
+    print(type(registros_con_campos_variables))
+    print()
     
-    registro = {
-        'padron': 98128,
-        'nombre': 'Rodriguez, Carlos'
-    }
+    print('Le agrego un campo al diccionario')
+    registros_con_campos_variables['otro_campo'] = 432
+    print(registros_con_campos_variables)
+    print()
     
-    print registro
-    print type(registro)
-    print
-    
-    print 'Y una vez que el alumno rinda el parcial, le puedo agregar',
-    print ' la nota a ese registro'
-    
-    registro['nota'] = 6
-    print registro
-    print 
-    
-    print 'Incluso le puedo agregar un diccionario que tenga las notas',
-    print 'de los trabajos prácticos. '
-    registro['TPs'] = {1: 4, 2: 8}
-    print registro
-    print 'Prestar atención que las claves del diccionario de trabajo',
-    print 'práctico son números enteros.'
-    print 'La nota del TP 2 es:', registro['TPs'][2]
+    print('Y ahora otro, pero con un int como índice')
+    registros_con_campos_variables[123] = 'también puede usarse ' \
+        'los números como clave'
+    print(registros_con_campos_variables)
 
-
-
-.. parsed-literal::
-
-    Podría usar los registros para guardar los datos de un alumno
-    {'nombre': 'Rodriguez, Carlos', 'padron': 98128}
-    <type 'dict'>
-    
-    Y una vez que el alumno rinda el parcial, le puedo agregar  la nota a ese registro
-    {'nombre': 'Rodriguez, Carlos', 'nota': 6, 'padron': 98128}
-    
-    Incluso le puedo agregar un diccionario que tenga las notas de los trabajos prácticos. 
-    {'TPs': {1: 4, 2: 8}, 'nombre': 'Rodriguez, Carlos', 'nota': 6, 'padron': 98128}
-    Prestar atención que las claves del diccionario de trabajo práctico son números enteros.
-    La nota del TP 2 es: 8
 
 
 Además, se pueden usar los campos de un registro para armar una forma
 más simple los strings:
 
-.. code:: python
-
-    alumno = {
-        'nombre': 'Juan',
-        'apellido': 'Perez',
-        'nota': 4
-    }
-    
-    print 'El alumno {nombre} {apellido} se sacó un {nota}'.format(**alumno)
-
-
-.. parsed-literal::
-
-    El alumno Juan Perez se sacó un 4
-
-
-Y si le queremos modificar la nota a un alumno, sólo tenemos que acceder
-a ese campo y asignarle un nuevo valor:
-
-.. code:: python
+.. activecode:: py_12
+    :nocodelens:
 
     alumno = {
         'nombre': 'Juan',
         'apellido': 'Perez',
         'nota': 2
     }
-    print alumno
+    
+    print('El alumno %(nombre)s %(apellido)s se sacó un %(nota)s' % alumno)
+    print('El alumno {nombre} {apellido} se sacó un {nota}'
+        .format(**alumno))
+
+
+Y si le queremos modificar la nota a un alumno, sólo tenemos que acceder
+a ese campo y asignarle un nuevo valor:
+
+.. activecode:: py_13
+    :nocodelens:
+
+    alumno = {
+        'nombre': 'Juan',
+        'apellido': 'Perez',
+        'nota': 2
+    }
+    print(alumno)
     
     alumno['nota'] = 5
-    print alumno
+    print(alumno)
 
-
-
-.. parsed-literal::
-
-    {'nombre': 'Juan', 'nota': 2, 'apellido': 'Perez'}
-    {'nombre': 'Juan', 'nota': 5, 'apellido': 'Perez'}
 
 
 O incluso se le puede cambiar el tipo de dato a un campo y agregar uno
 nuevo:
 
-.. code:: python
+.. activecode:: py_14
+    :nocodelens:
 
     alumno = {
         'nombre': 'Juan',
         'apellido': 'Perez',
         'parcial': 2
     }
-    print 'Alumno:', alumno
+    print('Alumno:', alumno)
     
     
     alumno['parcial'] = [2, 6]  # Cambio el tipo de dato de int a list
-    print 'Agrego la nota del recuperatorio:', alumno
+    print('Agrego la nota del recuperatorio:', alumno)
     
     alumno['coloquio'] = 8  # Agrego un nuevo campo
-    print 'Agrego la nota del coloquio:', alumno
+    print('Agrego la nota del coloquio:', alumno)
     
     del alumno['parcial']  # Elimino el campo nota
-    print 'Elimino las notas del parcial:', alumno
-
-
-.. parsed-literal::
-
-    Alumno: {'nombre': 'Juan', 'parcial': 2, 'apellido': 'Perez'}
-    Agrego la nota del recuperatorio: {'nombre': 'Juan', 'parcial': [2, 6], 'apellido': 'Perez'}
-    Agrego la nota del coloquio: {'nombre': 'Juan', 'coloquio': 8, 'parcial': [2, 6], 'apellido': 'Perez'}
-    Elimino las notas del parcial: {'nombre': 'Juan', 'coloquio': 8, 'apellido': 'Perez'}
+    print('Elimino las notas del parcial:', alumno)
 
 
 Algo que hay que tener en cuenta es que el orden en que se asignan los
 campos a un registro no es el orden interno de esos campos.
 
 Cajas vs Etiquetas
-------------------
+==================
 
-A diferencia de otros lenguajes, Python no trabaja con el concepto de
+A diferencia de otros lenguajes, Python no trabaja con el consepto de
 variables como una caja donde podemos guardar valores. En su lugar, usa
 las variables como etiquetas que hacen referencia a valores, que si bien
 son parecidos, no son exactamente lo mismo. Cuando decimos que guardamos
@@ -427,93 +300,78 @@ Esto en python se puede ver usando la función
 .. |image6| image:: b2box.png
 .. |image7| image:: ab2tag.png
 
-.. code:: python
+.. activecode:: py_15
+    :nocodelens:
 
-    print 'La posición del número 1 es:', id(1)
+    print('La posición del número 1 es:', id(1))
     x = 1
-    print 'La posición de X que apunta al número 1 es:', id(x)
-    print '¿Y si al número 1 lo incremento?'
+    print('La posición de X que apunta al número 1 es:', id(x))
+    print('¿Y si al número 1 lo incremento?')
     x += 1
-    print 'La posición de X ahora apunta a:', id(x)
+    print('La posición de X ahora apunta a:', id(x))
     lista_de_unos = [1, 1, 1, 1, 1]
-    print 'La lista tiene los elementos:', lista_de_unos
+    print('La lista tiene los elementos:', lista_de_unos)
     posiciones_de_memoria = [id(1), id(1), id(1), id(1), id(1)]
     
-    print 'Las posiciones de esos elementos son:', posiciones_de_memoria
+    print('Las posiciones de esos elementos son:', posiciones_de_memoria)
 
-
-
-.. parsed-literal::
-
-    La posición del número 1 es: 10531192
-    La posición de X que apunta al número 1 es: 10531192
-    ¿Y si al número 1 lo incremento?
-    La posición de X ahora apunta a: 10531168
-    La lista tiene los elementos: [1, 1, 1, 1, 1]
-    Las posiciones de esos elementos son: [10531192, 10531192, 10531192, 10531192, 10531192]
 
 
 Tipos de datos mutables e inmutables
-------------------------------------
+====================================
 
 En python se pueden diferenciar entre los tipos de datos en mutables e
 inmutables. Que una variable sea inmutable significa que cada vez que se
 la modifica, en realidad, lo que sucede es que se crea un nuevo valor y
 esa variable pasa a apuntarlo:
 
-.. code:: python
+.. activecode:: py_16
+    :nocodelens:
 
     x = 1
-    print 'El valor de X es:', x
-    print 'La posición de X que apunta al número 1 es:', id(x)
-    print '¿Y si al número 1 lo incremento?'
+    print('El valor de X es:', x)
+    print('La posición de X que apunta al número 1 es:', id(x))
+    print('¿Y si al número 1 lo incremento?')
     x += 1
-    print 'El valor de X es:', x
-    print 'La posición de X ahora apunta a:', id(x)
+    print('El valor de X es:', x)
+    print('La posición de X ahora apunta a:', id(x))
 
-
-.. parsed-literal::
-
-    El valor de X es: 1
-    La posición de X que apunta al número 1 es: 10531192
-    ¿Y si al número 1 lo incremento?
-    El valor de X es: 2
-    La posición de X ahora apunta a: 10531168
 
 
 En cambio, cuando lo que hacemos es modificar una variable mutable, como
 pueden ser las listas, lo que sucede es que esa variable sigue apuntando
 al mismo lugar, pero ahora lo que se modificó es el valor que contiene:
 
-.. code:: python
+.. activecode:: py_17
+    :nocodelens:
 
     x = []
-    print 'El valor de X es:', x
-    print 'La posición de X que apunta a la lista vacía es:', id(x)
-    print '¿Y si le agrego el número 1 a la lista?'
+    print('El valor de X es:', x)
+    print('La posición de X que apunta a la lista vacía es:', id(x))
+    print('¿Y si le agrego el número 1 a la lista?')
     x.append(1)
-    print 'Ahora, la lista X tiene los elementos:', x
-    print 'Y sin embargo, la posición a la que apunta X es:', id(x)
-    print 
+    print('Ahora, la lista X tiene los elementos:', x)
+    print('Y sin embargo, la posición a la que apunta X es:', id(x))
+    print()
     x = [1, 2, 3]
-    print 'Sin embargo, si a X le asignamos una nueva lista:', id(x)
+    print('Sin embargo, si a X le asignamos una nueva lista:', id(x))
 
 
-.. parsed-literal::
+Los tipos de datos **inmutables** son: 
 
-    El valor de X es: []
-    La posición de X que apunta a la lista vacía es: 140290496224504
-    ¿Y si le agrego el número 1 a la lista?
-    Ahora, la lista X tiene los elementos: [1]
-    Y sin embargo, la posición a la que apunta X es: 140290496224504
-    
-    Sin embargo, si a X le asignamos una nueva lista: 140290482456840
+* int 
+* str 
+* long 
+* float 
+* bool
+* None
+* tuple
 
+Los tipos de datos **mutables** son: 
 
-Los tipos de datos **inmutables** son: \* int \* str \* long \* float \*
-bool \* None \* tuple
-
-Los tipos de datos **mutables** son: \* list \* dict \* set
+* list
+* dict
+* set
 
 Para más información sobre la modificación de variables mutables e
 inmutables pueden ver el siguiente
@@ -533,135 +391,68 @@ for
 Si queremos imprimir los números del 0 al 14 podemos crear una lista con
 range y usar el for para imprimir cada valor:
 
-.. code:: python
+.. activecode:: py_18
+    :nocodelens:
 
-    print range(15)
     for i in range(15):
-        print i
+        print(i)
 
-
-.. parsed-literal::
-
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-    0
-    1
-    2
-    3
-    4
-    5
-    6
-    7
-    8
-    9
-    10
-    11
-    12
-    13
-    14
 
 
 Incluso, si queremos imprimir los valores de una lista que nosotros
 armamos, también podemos hacerlo:
 
-.. code:: python
+.. activecode:: py_19
+    :nocodelens:
 
     for i in [1, 6, 3, 9, 5, 2]:
-        print i
+        print(i)
 
-
-
-.. parsed-literal::
-
-    1
-    6
-    3
-    9
-    5
-    2
 
 
 Y si queremos imprimir cada elemento de la lista junto con su posición
 podemos usar la función enumerate:
 
-.. code:: python
+.. activecode:: py_20
+    :nocodelens:
 
     lista = range(15, 30, 3)
-    print lista
+    print(lista)
     for idx, value in enumerate(lista):
-        print '{0}: {1}'.format(idx, value)
+        print('%s: %s' % (idx, value))
 
-
-
-.. parsed-literal::
-
-    [15, 18, 21, 24, 27]
-    0: 15
-    1: 18
-    2: 21
-    3: 24
-    4: 27
 
 
 También se puede usar la función zip para ir tomando los primeros
 elementos de una lista, después los segundos, y así sucesivamente
 
-.. code:: python
+.. activecode:: py_21
+    :nocodelens:
 
     for par in zip([1, 2, 3], [4, 5, 6]):
-        print par
-
-
-.. parsed-literal::
-
-    (1, 4)
-    (2, 5)
-    (3, 6)
+        print(par)
 
 
 Y en realidad, se puede iterar sobre cualquier elemento *iterable*, como
 por ejemplo los strings:
 
-.. code:: python
+.. activecode:: py_22
+    :nocodelens:
 
     for caracter in "Hola mundo":
-        print caracter
-
-
-
-.. parsed-literal::
-
-    H
-    o
-    l
-    a
-     
-    m
-    u
-    n
-    d
-    o
+        print(caracter)
 
 
 También se pueden iterar listas que tengan distintos tipos de elementos,
 pero hay que tener en cuenta qué se quiere hacer con ellos:
 
-.. code:: python
+.. activecode:: py_23
+    :nocodelens:
 
     lista = [1, 2, "12", "34", [5, 6]]
-    print 'La lista tiene los elementos:', lista
+    print('La lista tiene los elementos:', lista)
     for elemento in lista:
-        print '{0}*2: {1}:'.format(elemento, elemento*2)
-
-
-
-.. parsed-literal::
-
-    La lista tiene los elementos: [1, 2, '12', '34', [5, 6]]
-    1*2: 2:
-    2*2: 4:
-    12*2: 1212:
-    34*2: 3434:
-    [5, 6]*2: [5, 6, 5, 6]:
+        print('{0}*2: {1}:'.format(elemento, elemento*2))
 
 
 while
@@ -670,68 +461,41 @@ while
 El ciclo while también ejecuta un bloque de código mientras la condición
 sea verdadera:
 
-.. code:: python
+.. activecode:: py_24
+    :nocodelens:
 
     numero = 5
     while numero < 10:
-        print numero
+        print(numero)
         numero += 1
-
-
-.. parsed-literal::
-
-    5
-    6
-    7
-    8
-    9
 
 
 Las listas tienen una función llamada pop que lo que hace es tomar el
 último elemento de ella y lo elimina:
 
-.. code:: python
+.. activecode:: py_25
+    :nocodelens:
 
-    lista = range(5)
-    print 'La lista antes de entrar al while tiene:', lista
+    lista = list(range(5))
+    print('La lista antes de entrar al while tiene:', lista)
     while lista:  # Si la lista no esta vacía, sigo sacando elementos
-        print lista.pop()
+        print(lista.pop())
     
-    print 'La lista después de salir del while tiene:', lista
-
-
-.. parsed-literal::
-
-    La lista antes de entrar al while tiene: [0, 1, 2, 3, 4]
-    4
-    3
-    2
-    1
-    0
-    La lista después de salir del while tiene: []
+    print('La lista después de salir del while tiene:', lista)
 
 
 Aunque también podría obtener el primero:
 
-.. code:: python
+.. activecode:: py_26
+    :nocodelens:
 
-    lista = range(5)
-    print 'La lista antes de entrar al while tiene:', lista
+    lista = list(range(5))
+    print('La lista antes de entrar al while tiene:', lista)
     while lista:  # Si la lista no esta vacía, sigo sacando elementos
-        print lista.pop(0)
+        print(lista.pop(0))
     
-    print 'La lista después de salir del while tiene:', lista
-
-
-.. parsed-literal::
-
-    La lista antes de entrar al while tiene: [0, 1, 2, 3, 4]
-    0
-    1
-    2
-    3
-    4
-    La lista después de salir del while tiene: []
+    print('La lista después de salir del while tiene:', lista)
+    
 
 
 Ejercicios
@@ -783,6 +547,7 @@ mayúsculas y minúsculas). Por ejemplo, para la lista
 ``Python ['Otra', 'posible', 'clasificacion', 'radica', 'en', 'si', 'una', 'variable', 'puede', 'cambiar', 'el', 'tipo', 'de', 'dato', 'que', 'se', 'puede', 'almacenar', 'en', 'ella', 'entre', 'una', 'sentencia', 'y', 'la', 'siguiente', '(', 'tipado', 'dinamico', ')', 'O', 'si', 'en', 'la', 'etapa', 'de', 'definicion', 'se', 'le', 'asigna', 'un', 'tipo', 'de', 'dato', 'a', 'una', 'variable', 'y', 'por', 'mas', 'que', 'se', 'puede', 'cambiar', 'el', 'contenido', 'de', 'la', 'misma', 'no', 'cambie', 'el', 'tipo', 'de', 'dato', 'de', 'lo', 'que', 'se', 'almacena', 'en', 'ella', '(', 'tipado', 'estatico', ')']``
 El resultado sería:
 
-.. code:: python
+.. activecode:: py_27
+    :nocodelens:
 
       {'el': 3, 'en': 4, 'etapa': 1, 'por': 1, 'Otra': 1, 'contenido': 1, 'almacenar': 1, 'sentencia': 1, 'le': 1, 'tipo': 3, 'la': 3, ')': 2, '(': 2, 'almacena': 1, 'estatico': 1, 'dinamico': 1, 'mas': 1, 'cambiar': 2, 'tipado': 2, 'ella': 2, 'de': 6, 'definicion': 1, 'puede': 3, 'dato': 3, 'que': 3, 'O': 1, 'variable': 2, 'asigna': 1, 'entre': 1, 'a': 1, 'siguiente': 1, 'posible': 1, 'clasificacion': 1, 'no': 1, 'radica': 1, 'una': 3, 'si': 2, 'un': 1, 'misma': 1, 'lo': 1, 'y': 2, 'cambie': 1, 'se': 4}

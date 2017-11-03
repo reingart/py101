@@ -12,7 +12,9 @@ Python
 
 Python es un lenguaje de alto nivel creado por Guido van Rossum a
 finales del año 1989 y que tuvo si primer versión pública (0.9.0) en
-Febrero de 1991. Mientras Guido participaba del desarrollo de un sistema
+Febrero de 1991.
+
+Mientras Guido participaba del desarrollo de un sistema
 operativo llamado Amoeba OS, se enfrentaba a ciertos problemas que eran
 muy complejos para ser desarrollado en Bash, pero desarrollarlos en C le
 parecía un exceso, por lo tanto, creó Python como lenguaje intermedio
@@ -28,12 +30,15 @@ Compilado vs Interpretado
 Existen infinitas clasificaciones para los lenguajes de programación,
 entre ellas una que los distingue en función de cuándo requieren de una
 aplicación para que la computadora entienda el código escrito por el
-desarrollador: \* \*\* *Compilador:* \*\* programa que lee todo el
+desarrollador:
+
+**Compilador:** programa que lee todo el
 código una única vez y lo traduce al lenguaje binario que es el que
 entiende la computadora. Sería el equivalente a traducir un libro. Cada
 frase se traduce una única vez y después tal vez nunca se la lee, o tal
 vez se la lee mil veces, pero la frase ya esta traducida. \*
-***Intérprete:*** programa que lee el código a medida que lo necesita y
+
+**Intérprete:** programa que lee el código a medida que lo necesita y
 va traduciendo al binario, la computadora ejecuta la instrucción que el
 intérprete le pide, y descarta esa traducción; por lo que cuando vuelva
 a pasar por esa misma porción de código, deberá volver a traducirla. Es
@@ -218,9 +223,12 @@ Tipos de datos
 En Python a las variables se les puede preguntar de qué tipo son usando
 la función type:
 
-.. code:: python
+.. activecode:: py_00
+    :nocodelens:
 
+    variable = 'Hola mundo'
     tipo_de_la_variable = type(variable)
+    print(tipo_de_la_variable)
 
 Enteros
 ~~~~~~~
@@ -229,87 +237,67 @@ Python 2 distingue dos tipos de enteros: \* int \* long
 
 En Python 3 directamente existe un único tipo de entero, los int.
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
 
-    numero_entero = 5          # Asigno el número 5 a la variable numero_entero
-    print numero_entero        # Imprimo el valor que tiene la variable numero_entero
-    print type(numero_entero)  # Imprimo el tipo de la variable numero_entero
-
-
-.. parsed-literal::
-
-    5
-    <type 'int'>
+    # Asigno el número 5 a la variable numero_entero
+    numero_entero = 5
+    # Imprimo el valor que tiene la variable numero_entero
+    print(numero_entero)
+    # Imprimo el tipo de la variable numero_entero
+    print(type(numero_entero))
 
 
 Ahora, ¿qué pasa cuando ese número entero crece mucho?, por ejemplo, si
 le asignamos 9223372036854775807
 
-.. code:: python
+.. activecode:: py_02
+    :nocodelens:
 
+    # defino dos variables (no imprime)
+    numero_entero = 5
     numero_muy_grande = -9223372036854775809
-    print numero_muy_grande
-    print type(numero_entero)
-    print 2**16/2
 
-.. code:: python
+.. activecode:: py_03
+    :nocodelens:
+    :include: py_02
 
-    numero_muy_grande = -9223372036854775809
-    print numero_muy_grande
-    print type(numero_entero)
-    print 2**16/2
-
-
-.. parsed-literal::
-
-    -9223372036854775809
-    <type 'int'>
-    32768
+    print(numero_muy_grande)
+    print(type(numero_muy_grande))
+    print(2**16/2)
 
 
 ¿Y si ahora le sumamos 1?
 
-.. code:: python
+.. activecode:: py_04
+    :nocodelens:
+    :include: py_02
 
     numero_muy_grande += 1
-    print numero_muy_grande
-    print type(numero_muy_grande)
-
-
-.. parsed-literal::
-
-    -9223372036854775808
-    <type 'long'>
+    print(numero_muy_grande)
+    print(type(numero_muy_grande))
 
 
 Reales
 ~~~~~~
 
-.. code:: python
+.. activecode:: py_05
+    :nocodelens:
 
     numero_real = 7.5
-    print numero_real
-    print type(numero_real)
-
-
-.. parsed-literal::
-
-    7.5
-    <type 'float'>
+    print(numero_real)
+    print(type(numero_real))
 
 
 ¿Y qué pasa si a un entero le sumamos un real?
 
-.. code:: python
+.. activecode:: py_06
+    :nocodelens:
 
-    print numero_entero + numero_real
-    print type(numero_entero + numero_real)
-
-
-.. parsed-literal::
-
-    12.5
-    <type 'float'>
+    numero_entero = 5
+    numero_real = 7.5
+    print(numero_entero + numero_real)
+    print(type(numero_entero + numero_real))
 
 
 Operaciones entre reales y enteros
@@ -317,59 +305,47 @@ Operaciones entre reales y enteros
 
 ¿Y si dividimos dos números enteros?, ¿dará un número real?
 
-.. code:: python
+.. activecode:: py_07
+    :nocodelens:
 
     dividendo = 5
     divisor = 3
     resultado = dividendo / divisor
-    print resultado
-    print type(resultado)
+    print(resultado)
+    print(type(resultado))
 
-
-
-.. parsed-literal::
-
-    1
-    <type 'int'>
-
+CUIDADO: En Python 3 sí devuelve un número real (con decimales), 
+pero en Python 2 devuelve un número entero! 
 
 En cambio, si alguno de los números es real:
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
 
+    dividendo = 5
     divisor = 3.0
     resultado = dividendo / divisor
-    print resultado
-    print type(resultado)
+    print(resultado)
+    print(type(resultado))
 
 
-
-.. parsed-literal::
-
-    1.66666666667
-    <type 'float'>
-
-
+Tanto en Python 2 como en Python 3 devuelve un número real (con decimales).
+ 
 ¿Y si queremos hacer la división entera por más que uno de los números
 sea real?
 
-.. code:: python
+.. activecode:: py_09
+    :nocodelens:
 
+    dividendo = 5
+    divisor = 3.0
     cociente = dividendo // divisor
-    print "cociente: ", cociente
-    print type(cociente)
+    print("cociente: ", cociente)
+    print(type(cociente))
     
     resto = dividendo % divisor
-    print "resto: ", resto
-    print type(resto)
-
-
-.. parsed-literal::
-
-    cociente:  1.0
-    <type 'float'>
-    resto:  2.0
-    <type 'float'>
+    print("resto: ", resto)
+    print(type(resto))
 
 
 Esto cambia en Python 3, donde la / hace la división real (por más que
@@ -382,23 +358,15 @@ Python, a diferencia de la mayoría de los lenguajes, también soporta los
 números complejos. Tal vez éste es uno de los motivos por los que Python
 se usa tanto en el campo científico.
 
-.. code:: python
+.. activecode:: py_10
+    :nocodelens:
 
     complejo = 5 + 3j
-    print complejo
-    print type(complejo)
+    print(complejo)
+    print(type(complejo))
     complejo_cuadrado = complejo ** 2
-    print '(5+3j)*(5+3j) = 5*5 + 5*3j + 3j*5 + 3j*3j = (25-9) + 30j'
-    print complejo_cuadrado
-
-
-
-.. parsed-literal::
-
-    (5+3j)
-    <type 'complex'>
-    (5+3j)*(5+3j) = 5*5 + 5*3j + 3j*5 + 3j*3j = (25-9) + 30j
-    (16+30j)
+    print('(5+3j)*(5+3j) = 5*5 + 5*3j + 3j*5 + 3j*3j = (25-9) + 30j')
+    print(complejo_cuadrado)
 
 
 Si bien Python soporta aritmética de complejos, la verdad es que no es
@@ -410,68 +378,49 @@ Booleanos
 
 Python también soporta el tipo de dato booleano:
 
-.. code:: python
+.. activecode:: py_11
+    :nocodelens:
 
     boolean = True
-    print boolean
-    print not boolean
-    print type(boolean)
-    print True or False and True
-
-
-.. parsed-literal::
-
-    True
-    False
-    <type 'bool'>
-    True
+    print(boolean)
+    print(not boolean)
+    print(type(boolean))
+    print(True or False and True)
 
 
 También se puede crear un boolean a partir de comparar dos números:
 
-.. code:: python
+.. activecode:: py_12
+    :nocodelens:
 
     boolean = 5 != 5
-    print boolean
-
-
-.. parsed-literal::
-
-    False
+    print(boolean)
 
 
 Incluso, se puede saber fácilmente si un número está dentro de un rango
 o no.
 
-.. code:: python
+.. activecode:: py_13
+    :nocodelens:
 
     numero = 7
     if 5 < numero < 9:
-        'El número 7 se encuentra en el rango entre 5 y 9'
+        print('El número 7 se encuentra en el rango entre 5 y 9')
     
     if 5 < numero < 6:
-        'El número 7 se encuentra en el rango entre 5 y 6'
+        print('El número 7 se encuentra en el rango entre 5 y 6')
 
 Muchas formas de imprimir el número 25
 
-.. code:: python
+.. activecode:: py_14
+    :nocodelens:
 
-    print "--{0}--".format(25)
-    print "--{0:4}--".format(25)  # Ocupando 4 espacios
-    print "--{0:04}--".format(25)  # Ocupando 4 espacios y rellenando con 0
-    print "--{0:b}--".format(25)  # En binario
-    print "--{0:x}--".format(25)  # En hexadecimal
-    print "--{0:04x}--".format(25)  # En binario y ocupando 4 espacios y rellenando con 0
-
-
-.. parsed-literal::
-
-    --25--
-    --  25--
-    --0025--
-    --11001--
-    --19--
-    --0019--
+    print("--{0}--".format(25))
+    print("--{0:4}--".format(25))    # Ocupando 4 espacios
+    print("--{0:04}--".format(25))   # Ocupando 4 espacios y rellenando con 0
+    print("--{0:b}--".format(25))    # En binario
+    print("--{0:x}--".format(25))    # En hexadecimal
+    print("--{0:04x}--".format(25))  # En binario y ocupando 4 espacios y rellenando con 0
 
 
 Strings
@@ -481,47 +430,30 @@ En python los strings se pueden armar tanto con comillas simples (')
 como dobles ("), lo que no se puede hacer es abrir con unas y cerrar con
 otras.
 
-.. code:: python
+.. activecode:: py_15
+    :nocodelens:
 
     cadena_caracteres = 'Holamundo'
-    print cadena_caracteres
-    print type(cadena_caracteres)
+    print(cadena_caracteres)
+    print(type(cadena_caracteres))
     
     cadena_caracteres = "Y con doble comilla?, de qué tipo es?"
-    print cadena_caracteres
-    print type(cadena_caracteres)
-
-
-
-.. parsed-literal::
-
-    Holamundo
-    <type 'str'>
-    Y con doble comilla?, de qué tipo es?
-    <type 'str'>
+    print(cadena_caracteres)
+    print(type(cadena_caracteres))
 
 
 Además, se pueden armar strings multilínea poniendo tres comillas
 simples o dobles seguidas:
 
-.. code:: python
+.. activecode:: py_16
+    :nocodelens:
 
     cadena_caracteres = """y si quiero
     usar un string
     que se escriba en varias
     líneas?."""
-    print cadena_caracteres
-    print type(cadena_caracteres)
-
-
-
-.. parsed-literal::
-
-    y si quiero
-    usar un string
-    que se escriba en varias
-    líneas?.
-    <type 'str'>
+    print(cadena_caracteres)
+    print(type(cadena_caracteres))
 
 
 Índices y *Slice* en string
@@ -530,18 +462,12 @@ simples o dobles seguidas:
 Si queremos obtener un caracter del string podemos acceder a él
 simplemente con poner entre corchetes su posición (comenzando con la 0):
 
-.. code:: python
+.. activecode:: py_18
+    :nocodelens:
 
     cadena_caracteres = 'Hola mundo'
-    print cadena_caracteres
-    print 'El septimo caracter de la cadena "{0}" es "{1}"'.format(cadena_caracteres, cadena_caracteres[6])
-
-
-
-.. parsed-literal::
-
-    Hola mundo
-    El septimo caracter de la cadena "Hola mundo" es "u"
+    print(cadena_caracteres)
+    print('El septimo caracter de la cadena "{0}" es "{1}"'.format(cadena_caracteres, cadena_caracteres[6]))
 
 
 +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
@@ -554,15 +480,11 @@ Aunque también nos podemos referir a ese caracter comenzando por su
 posición, pero comenzando a contar desde la última posición (comenzando
 en 1):
 
-.. code:: python
+.. activecode:: py_19
+    :nocodelens:
 
-    print 'El septimo caracter de la cadena "{0}" es "{1}"'.format(cadena_caracteres, cadena_caracteres[-4])
-
-
-
-.. parsed-literal::
-
-    El septimo caracter de la cadena "Hola mundo" es "u"
+    cadena_caracteres = 'Hola mundo'
+    print('El septimo caracter de la cadena "{0}" es "{1}"'.format(cadena_caracteres, cadena_caracteres[-4]))
 
 
 +-------+------+------+------+------+------+------+------+------+------+
@@ -575,101 +497,59 @@ en 1):
 
 Lo que no se puede hacer es cambiar sólo una letra de un string:
 
-.. code:: python
+.. activecode:: py_20
+    :nocodelens:
 
+    cadena_caracteres = 'Hola mundo'
     cadena_caracteres[6] = 'x'
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    <ipython-input-19-d7e1aa3d6fc3> in <module>()
-    ----> 1 cadena_caracteres[6] = 'x'
-    
-
-    TypeError: 'str' object does not support item assignment
 
 
 Aunque a veces lo que queremos es una parte del string, no todo:
 
-.. code:: python
+.. activecode:: py_21
+    :nocodelens:
 
-    print cadena_caracteres
-    print cadena_caracteres[3]
-    print cadena_caracteres[2:8]     # Con los dos índices positivos
-    print cadena_caracteres[2:-2]    # Con un índice negativo y otro positivo
-    print cadena_caracteres[-8:8]    # Con un índice negativo y otro positivo
-    print cadena_caracteres[-8:-2]   # Con ambos índices negativos
-    print cadena_caracteres[2:-2:3]  # Y salteándose de a dos
-
-
-
-.. parsed-literal::
-
-    Hola mundo
-    a
-    la mun
-    la mun
-    la mun
-    la mun
-    lm
+    cadena_caracteres = 'Hola mundo'
+    print(cadena_caracteres)
+    print(cadena_caracteres[3])
+    print(cadena_caracteres[2:8])     # Con los dos índices positivos
+    print(cadena_caracteres[2:-2])    # Con un índice negativo y otro positivo
+    print(cadena_caracteres[-8:8])    # Con un índice negativo y otro positivo
+    print(cadena_caracteres[-8:-2])   # Con ambos índices negativos
+    print(cadena_caracteres[2:-2:3])  # Y salteándose de a dos
 
 
 Aunque lo más común es quitar el último carácter, por ejemplo, cuando es
 un Enter:
 
-.. code:: python
+.. activecode:: py_22
+    :nocodelens:
 
     cadena_caracteres = 'Hola mundo\n'
-    print cadena_caracteres
-    print cadena_caracteres[:-1]
-    print cadena_caracteres[:-5]
-
-
-.. parsed-literal::
-
-    Hola mundo
-    
-    Hola mundo
-    Hola m
+    print(cadena_caracteres)
+    print(cadena_caracteres[:-1])
+    print(cadena_caracteres[:-5])
 
 
 Ingreso de datos desde teclado
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: python
+.. activecode:: py_23
+    :nocodelens:
 
-    numero = raw_input('Ingrese un número: ')
-    print numero
-    print type(numero)
-
-
-
-.. parsed-literal::
-
-    Ingrese un número: 5
-    5
-    <type 'str'>
+    numero = input('Ingrese un número: ')
+    print(numero)
+    print(type(numero))
 
 
 Y para convertirlo como entero:
 
-.. code:: python
+.. activecode:: py_24
+    :nocodelens:
 
-    numero = int(numero)
-    print numero
-    print type(numero)
-
-
-
-.. parsed-literal::
-
-    5
-    <type 'int'>
+    numero = int(input('Ingrese un número: '))
+    print(numero)
+    print(type(numero))
 
 
 None
@@ -687,8 +567,8 @@ parezca que es muy inútil, en realidad se usa mucho.
 
    -->
 
-Estructuras de control
-======================
+Estructuras de control selectivas
+=================================
 
 Así como en Pascal se delimitan los bloques de código con las palabras
 reservadas *begin* y *end*, en Python se usan la indentación (espacios)
@@ -698,50 +578,40 @@ qué no.
 if
 --
 
-.. code:: python
+.. activecode:: py_25
+    :nocodelens:
 
     numero1 = 1
     numero2 = 2
     
     if numero1 == numero2:
-        print 'Los números son iguales'
+        print('Los números son iguales')
     
-    print 'Este string se imprime siempre'
+    print('Este string se imprime siempre')
     
-    print 'Ahora cambio el valor de numero2'
+    print('Ahora cambio el valor de numero2')
     numero2 = 1
     
     if numero1 == numero2:
-        print 'Los números son iguales'
+        print('Los números son iguales')
     
-    print 'Este string se imprime siempre'
+    print('Este string se imprime siempre')
 
-
-.. parsed-literal::
-
-    Este string se imprime siempre
-    Ahora cambio el valor de numero2
-    Los números son iguales
-    Este string se imprime siempre
 
 
 if-else
 -------
 
-.. code:: python
+.. activecode:: py_26
+    :nocodelens:
 
     numero1 = 1
     numero2 = 1
     
     if numero1 == numero2:
-        print 'Los números son iguales'
+        print('Los números son iguales')
     else:
-        print 'Los números son distintos'
-
-
-.. parsed-literal::
-
-    Los números son iguales
+        print('Los números son distintos')
 
 
 if-elif-else
@@ -751,39 +621,37 @@ Ahora si queremos imprimir si un número es igual, menor o mayor a otro
 tendríamos que usar if anidados en Pascal o C; y no queda del todo
 claro:
 
-.. code:: python
+.. activecode:: py_27
+    :nocodelens:
+
+    numero1 = 1
+    numero2 = 2
 
     # Como lo tendríamos que hacer en Pascal o C.
     if numero1 == numero2:
-        print 'Los dos números son iguales'
+        print('Los dos números son iguales')
     else:
         if numero1 > numero2:
-            print 'numero1 es mayor a numero2'
+            print('numero1 es mayor a numero2')
         else:
-            print 'numero1 es menor a numero2'
-
-
-.. parsed-literal::
-
-    Los dos números son iguales
+            print('numero1 es menor a numero2')
 
 
 En cambio, en Python lo podemos un poco más compacto y claro:
 
-.. code:: python
+.. activecode:: py_28
+    :nocodelens:
+
+    numero1 = 1
+    numero2 = 2
 
     # Más corto y elegante en Python.
     if numero1 == numero2:
-        print 'Los dos números son iguales'
+        print('Los dos números son iguales')
     elif numero1 > numero2:
-        print 'numero1 es mayor a numero2'
+        print('numero1 es mayor a numero2')
     else:
-        print 'numero1 es menor a numero2'
-
-
-.. parsed-literal::
-
-    Los dos números son iguales
+        print('numero1 es menor a numero2')
 
 
 Cualquier tipo de dato se lo puede evaluar como booleano. Se toma como
@@ -794,30 +662,26 @@ diccionario: '', (), [], {}
 Por lo tanto, se puede saber si una lista esta vacía o no con
 simplemente:
 
-.. code:: python
+.. activecode:: py_29
+    :nocodelens:
 
     if []:
-        print 'La lista no esta vacía'
+        print('La lista no esta vacía')
 
-.. code:: python
+.. activecode:: py_30
+    :nocodelens:
 
     if False or None or [] or () or {} or 0 or '':
-        print 'Alguna de las anteriores no era falsa'
+        print('Alguna de las anteriores no era falsa')
     else:
-        print 'Todos los valores anteriores son consideradas como Falso'
+        print('Todos los valores anteriores son consideradas como Falso')
     
     
     x = 'Este mensaje se va a mostrar porque será evaulado como verdadero'
     if x:
-        print x
+        print(x)
     else:
-        print 'Esta vacio'
-
-
-.. parsed-literal::
-
-    Todos los valores anteriores son consideradas como Falso
-    Este mensaje se va a mostrar porque será evaulado como verdadero
+        print('Esta vacio')
 
 
 short-if
@@ -831,35 +695,26 @@ Otra forma de escribir el if en una sola línea es poner:
 
 Por ejemplo:
 
-.. code:: python
+.. activecode:: py_32
+    :nocodelens:
 
     num = 5
     es_par = True if (num % 2 == 0) else False
-    print '5 es par?:', es_par
+    print('5 es par?:', es_par)
     
     num = 6
     es_par = True if (num % 2 == 0) else False
     
-    print '6 es par?:', es_par
+    print('6 es par?:', es_par)
 
 
-.. parsed-literal::
-
-    5 es par?: False
-    6 es par?: True
-
-
-.. code:: python
+.. activecode:: py_33
+    :nocodelens:
 
     nulo = None
-    print nulo
-    print type(nulo)
+    print(nulo)
+    print(type(nulo))
 
-
-.. parsed-literal::
-
-    None
-    <type 'NoneType'>
 
 
 Ejercicios
@@ -868,23 +723,22 @@ Ejercicios
 1.  Teniendo en dos variables la base y la altura de un rectángulo,
     calcular el perímetro y la superficie.
 2.  Dados dos números, imprimir:
-3.  La suma de ambos
-4.  La diferencia (el mayor menos el menor)
-5.  La multiplicación
-6.  La división
-7.  Escribir un algoritmo que determine si un número N es divisible por
+ a. La suma de ambos
+ b. La diferencia (el mayor menos el menor)
+ c. La multiplicación
+ d. La división
+3.  Escribir un algoritmo que determine si un número N es divisible por
     M, siendo N y M dos variables del programa.
-8.  Pasar un período expresado en segundos a un período expresado en
+4.  Pasar un período expresado en segundos a un período expresado en
     días, horas, minutos y segundos.
-9.  Dada la distancia entre dos puntos y las horas de partida y de
+5.  Dada la distancia entre dos puntos y las horas de partida y de
     llegada de un movil, expresadas en horas, minutos y segundos,
     calcular su velocidad promedio.
-10. La relación entre temperaturas Celsius y Fahrenheit está dada por:
+6.  La relación entre temperaturas Celsius y Fahrenheit está dada por:
 
     .. math:: C = 5/9 * (F-32)
 
     Escribir un algoritmo que le pida al usuario:
-11. la temperatura
-12. la unidad en la que se encuentra
-
-Y luego mostrar la temperatura convertida en la otra unidad.
+ a. la temperatura
+ b. la unidad en la que se encuentra
+ c. y luego mostrar la temperatura convertida en la otra unidad.
