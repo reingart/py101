@@ -11,8 +11,8 @@
 Tipos de datos compuestos
 =========================
 
-Listas
-------
+Listas (list)
+-------------
 
 En Python podemos guardar varios elementos usando
 `listas <https://docs.python.org/3/tutorial/introduction.html#lists>`__
@@ -119,8 +119,8 @@ números:
     print('  range(2,9,3):', range(2,9,3))
 
 
-Tuplas
-------
+Tuplas (tuple)
+--------------
 
 Las
 `tuplas <https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences>`__
@@ -140,8 +140,8 @@ constantes, queremos crear variables que no se modifiquen.
     print(type(tupla))
 
 
-Diccionarios
-------------
+Diccionarios (dict)
+-------------------
 
 El equivalente a los registros de Pascal serían los
 `diccionarios <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>`__,
@@ -230,8 +230,8 @@ nuevo:
 Algo que hay que tener en cuenta es que el orden en que se asignan los
 campos a un registro no es el orden interno de esos campos.
 
-Cajas vs Etiquetas
-==================
+Variables: Cajas vs Etiquetas
+=============================
 
 A diferencia de otros lenguajes, Python no trabaja con el consepto de
 variables como una caja donde podemos guardar valores. En su lugar, usa
@@ -240,56 +240,35 @@ son parecidos, no son exactamente lo mismo. Cuando decimos que guardamos
 un valor en una caja, lo que en realidad hace la computadora es acceder
 a una posición de memoria y escribir en esa posición.
 
-+----------+-------------+---------------+
-| Ejemplo  | Cajas       | Etiquetas     |
-+==========+=============+===============+
-| Si a la  | Guardamos   | Hacemos que   |
-| variable | el valor 1  | la referencia |
-| **a** le | en la caja  | **a** apunte  |
-| asignamo | **a**       | al valor 1    |
-| s        | |image0|    | |image1|      |
-| el       |             |               |
-| número 1 |             |               |
-+----------+-------------+---------------+
-| Y cuando | Pisamos el  | Nuestra       |
-| a esa    | valor de    | referencia    |
-| variable | **a** y     | deja de       |
-| queremos | guardamos   | apuntar a     |
-| asignarl | el valor 2  | donde lo      |
-| e        | |image2|    | hacía antes y |
-| el       |             | ahora apunta  |
-| número   |             | a una nueva   |
-| dos      |             | posición de   |
-|          |             | memoria       |
-|          |             | quedando el   |
-|          |             | número 1 sin  |
-|          |             | ser apuntado  |
-|          |             | por nadie     |
-|          |             | |image3|      |
-|          |             | |image4|      |
-+----------+-------------+---------------+
-| Y al     | En este     | Al copiar el  |
-| decir    | caso se     | contenido, lo |
-| que la   | crea una    | que se copia  |
-| variable | nueva caja  | es la         |
-| **a** es | con el      | referencia    |
-| igual a  | valor 2     | |image7|      |
-| la       | |image5|    |               |
-| variable | |image6|    |               |
-| **b** lo |             |               |
-| que      |             |               |
-| sucede   |             |               |
-| es que   |             |               |
-| se copia |             |               |
-| el       |             |               |
-| contenid |             |               |
-| o        |             |               |
-| de **a** |             |               |
-| en **b** |             |               |
-+----------+-------------+---------------+
++--------------------+----------------------------+----------------------------+
+| Ejemplo            | Cajas                      | Etiquetas                  |
++====================+============================+============================+
+| Si a la variable   | Guardamos el valor 1       | Hacemos que la referencia  |
+| **a** le asignamos | en la caja **a**           | **a** apunte al valor 1    |
+| el número 1        |                            |                            |
+|                    | |image0|                   | |image1|                   |
++--------------------+----------------------------+----------------------------+
+| Y cuando a esa     | Pisamos el valor de        | Nuestra referencia deja de |
+| variable queremos  | **a** y guardamos          | apuntar a donde lo hacía   |
+| asignarle el       | el valor 2                 | antes, ahora apunta a una  |
+| número 2           |                            | nueva posición de memoria; |
+|                    | |image2|                   | quedando el número 1 sin   |
+|                    |                            | ser apuntado por nadie     |
+|                    |                            |                            |
+|                    |                            | |image3| |image4|          |
++--------------------+----------------------------+----------------------------+
+| Y al decir que la  | En este caso se crea       | Al copiar el contenido, lo |
+| variable **a** es  | una nueva caja con el      | que se copia es la         |
+| igual a la         | valor 2                    | referencia                 |
+| variable **b** lo  |                            |                            |
+| que sucede es que  |                            |                            |
+| se copia el        | |image5| |image6|          | |image7|                   |
+| contenido de **a** |                            |                            |
+| en **b**           |                            |                            |
++--------------------+----------------------------+----------------------------+
 
 Esto en python se puede ver usando la función
-`id <https://docs.python.org/2/library/functions.html#id>`__:
+`id <https://docs.python.org/3/library/functions.html#id>`__:
 
 .. |image0| image:: a1box.png
 .. |image1| image:: a1tag.png
@@ -300,8 +279,8 @@ Esto en python se puede ver usando la función
 .. |image6| image:: b2box.png
 .. |image7| image:: ab2tag.png
 
-.. activecode:: py_15
-    :nocodelens:
+
+.. codelens:: py_15
 
     print('La posición del número 1 es:', id(1))
     x = 1
@@ -318,15 +297,14 @@ Esto en python se puede ver usando la función
 
 
 Tipos de datos mutables e inmutables
-====================================
+------------------------------------
 
 En python se pueden diferenciar entre los tipos de datos en mutables e
 inmutables. Que una variable sea inmutable significa que cada vez que se
 la modifica, en realidad, lo que sucede es que se crea un nuevo valor y
 esa variable pasa a apuntarlo:
 
-.. activecode:: py_16
-    :nocodelens:
+.. codelens:: py_16
 
     x = 1
     print('El valor de X es:', x)
@@ -342,8 +320,7 @@ En cambio, cuando lo que hacemos es modificar una variable mutable, como
 pueden ser las listas, lo que sucede es que esa variable sigue apuntando
 al mismo lugar, pero ahora lo que se modificó es el valor que contiene:
 
-.. activecode:: py_17
-    :nocodelens:
+.. codelens:: py_17
 
     x = []
     print('El valor de X es:', x)

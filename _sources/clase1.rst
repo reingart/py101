@@ -45,60 +45,32 @@ a pasar por esa misma porción de código, deberá volver a traducirla. Es
 el equivalente a un intérprete en una conferencia, si el orador repite
 la misma frase más de una vez, éste tiene que volver a traducirla.
 
-+----------+-------------+---------------+
-| **Compil | **Interpret |
-| ado**    | ado**       |
-+==========+=============+===============+
-| Velocida | Lento, hay  | Rápido, se    |
-| d        | que         | modifica el   |
-| de       | compilar    | código y se   |
-| desarrol | cada vez y  | vuelve a      |
-| lo       | es una      | probar. A     |
-|          | tarea que   | veces, ni     |
-|          | puede       | siquiera      |
-|          | tardar      | requiere      |
-|          | varios      | reiniciar el  |
-|          | minutos     | programa      |
-+----------+-------------+---------------+
-| Velocida | Rápido, se  | Lento, es     |
-| d        | compila una | necesario     |
-| de       | única vez   | leer,         |
-| ejecució | todo el     | interpretar y |
-| n        | programa y  | traducir el   |
-|          | el          | código        |
-|          | ejecutable  | mientras el   |
-|          | generado ya | programa está |
-|          | lo entiende | corriendo     |
-|          | la máquina  |               |
-+----------+-------------+---------------+
-| Dependen | Si, siempre | No, con       |
-| cia      | que se      | instalar el   |
-| de la    | genera un   | intérprete en |
-| platafor | ejecutable  | la            |
-| ma       | es para una | computadora   |
-|          | arquitectur | que se quiere |
-|          | a           | correr el     |
-|          | en          | programa es   |
-|          | particular. | suficiente    |
-|          | Por         |               |
-|          | ejemplo,    |               |
-|          | para        |               |
-|          | Windows de  |               |
-|          | 32 bits,    |               |
-|          | linux de 64 |               |
-|          | bits, etc.  |               |
-+----------+-------------+---------------+
-| Dependen | No, una vez | Si, siempre   |
-| cia      | que se      | que se quiera |
-| del      | compilo no  | correr el     |
-| lenguaje | es          | programa es   |
-|          | necesario   | necesario     |
-|          | instalar el | instalar el   |
-|          | compilador  | intérprete    |
-|          | para        |               |
-|          | ejecutar el |               |
-|          | programa    |               |
-+----------+-------------+---------------+
+
++-------------+-------------------------------+--------------------------------+
+|             | **Compilado**                 | **Interpretado**               |
+|             |                               |                                |
++=============+===============================+================================+
+| Velocidad   | Lento, hay que compilar cada  | Rápido, se modifica el         |
+| de          | vez y es una tarea que puede  | código y se vuelve a probar.   |
+| desarrollo  | tardar varios minutos         | A veces, ni siquiera           |
+|             |                               | requiere reiniciar el programa |
++-------------+-------------------------------+--------------------------------+
+| Velocidad   | Rápido, se compila una única  | Lento, es necesario leer,      |
+| de          | vez todo el programa y el     | interpretar y traducir el      |
+| ejecución   | ejecutable generado ya lo     | código mientras el programa    |
+|             | entiende la máquina           | está corriendo                 |
++-------------+-------------------------------+--------------------------------+
+| Dependencia | Si, siempre que se genera un  | No, con instalar el intérprete |
+| de la       | ejecutable es para una        | en la computadora que se       |
+| plataforma  | arquitectura en particular.   | quiere correr el programa es   |
+|             | Por ejemplo, para Windows de  | suficiente                     |
+|             | 32 bits, linux 64 bits, etc.  |                                |
++-------------+-------------------------------+--------------------------------+
+| Dependencia | No, una vez que se compilo no | Si, siempre que se quiera      |
+| del         | es necesarioinstalar el       | correr el programa es          |
+| lenguaje    | compilador para ejecutar el   | necesario instalar el          |
+|             | programa                      | intérprete                     |
++-------------+-------------------------------+--------------------------------+
 
 Si bien Python es un lenguaje interpretado, en realidad se podría
 compilar el código y algo de eso hace sólo el intérprete cuando genera
@@ -173,34 +145,43 @@ Objetivos y características
 En 1989 Guido van Rossum era parte del equipo que desarrollaba Amoeba OS
 y se dió cuenta que muchos programadores al momento de tener que elegir
 un lenguaje para solucionar ciertos problemas se encontraban con que
-tenían dos alternativas, pero ninguna cerraba a la perfección: \*
-*Bash:* lenguaje de scripting (es el que usa la consola de linux como
-intérprete) y en este contexto se quedaba corto y complicaba la solución
-\* *C:* lenguaje estructurado con características de bajo, mediano y
-alto nivel; pero que en estas circunstancias era demasiado. Era como
-matar un mosquito con cañón.
+tenían dos alternativas, pero ninguna cerraba a la perfección:
+
+* *Bash:* lenguaje de scripting (es el que usa la consola de linux como
+  intérprete) y en este contexto se quedaba corto y complicaba la solución
+* *C:* lenguaje estructurado con características de bajo, mediano y
+  alto nivel; pero que en estas circunstancias era demasiado. Era como
+  matar un mosquito con cañón.
 
 Ante esta situación, e influido por el lenguaje ABC del cual había
 participado, es que decidió crear Python como un lenguaje intermedio
-entre bash y C que tiene las siguientes características: \* Extensible
-(se le pueden agregar módulos en C y Python) \* Multiplataforma (Amoeba
-OS, Unix, Windows y Mac) \* Sintaxis simple, clara y sencilla \*
-Fuertemente tipado \* Tipado dinámico \* Gran librería estándar \*
-Introspección
+entre bash y C que tiene las siguientes características:
+
+* Extensible (se le pueden agregar módulos en C y Python)
+* Multiplataforma (Amoeba OS, Unix, Windows y Mac)
+* Sintaxis simple, clara y sencilla
+* Fuertemente tipado
+* Tipado dinámico
+* Gran librería estándar
+* Introspección
 
 Filosofia de Python
 ~~~~~~~~~~~~~~~~~~~
 
 Dentro de lo que es el *Zen de Python* están escritas varias reglas que
-debería seguir todo código escrito en Python. Algunas de ellas son: \*
-Bello es mejor que feo \* **Explícito es mejor que implícito** \* Simple
-es mejor que complejo \* Complejo es mejor que complicado \* **La
-legibilidad cuenta** \* Los casos especiales no son tan especiales como
-para quebrantar las reglas \* Aunque lo práctico le gana a la pureza \*
-**Si la implementación es difícil de explicar, es una mala idea**
+debería seguir todo código escrito en Python. Algunas de ellas son:
+
+* Bello es mejor que feo
+* **Explícito es mejor que implícito**
+* Simple es mejor que complejo
+* Complejo es mejor que complicado
+* **La legibilidad cuenta**
+* Los casos especiales no son tan especiales como para quebrantar las reglas
+* Aunque lo práctico le gana a la pureza
+* **Si la implementación es difícil de explicar, es una mala idea**
 
 Estructura de un programa en Python
------------------------------------
+===================================
 
 La estructura de un programa en Python no es tan estricta como puede
 serlo en Pascal o en C/C++, ya que no debe comenzar con ninguna palabra
@@ -215,10 +196,8 @@ uso de las llaves (``{`` y ``}``). Sin embargo, en Python, se utiliza la
 indentación; es decir, la cantidad de espacios (o tabulaciones) que hay
 entre el comienzo de la línea y el primer carácter distinto a ellos.
 
---------------
-
-Tipos de datos
---------------
+Tipos de datos básicos
+======================
 
 En Python a las variables se les puede preguntar de qué tipo son usando
 la función type:
@@ -230,10 +209,13 @@ la función type:
     tipo_de_la_variable = type(variable)
     print(tipo_de_la_variable)
 
-Enteros
-~~~~~~~
+Enteros (int y long)
+--------------------
 
-Python 2 distingue dos tipos de enteros: \* int \* long
+Python 2 distingue dos tipos de enteros:
+
+* int
+* long
 
 En Python 3 directamente existe un único tipo de entero, los int.
 
@@ -278,8 +260,8 @@ le asignamos 9223372036854775807
     print(type(numero_muy_grande))
 
 
-Reales
-~~~~~~
+Reales (float)
+--------------
 
 .. activecode:: py_05
     :nocodelens:
@@ -301,7 +283,7 @@ Reales
 
 
 Operaciones entre reales y enteros
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ¿Y si dividimos dos números enteros?, ¿dará un número real?
 
@@ -352,7 +334,7 @@ Esto cambia en Python 3, donde la / hace la división real (por más que
 le pases dos números enteros) y la // hace la división entera.
 
 Complejos
-~~~~~~~~~
+---------
 
 Python, a diferencia de la mayoría de los lenguajes, también soporta los
 números complejos. Tal vez éste es uno de los motivos por los que Python
@@ -373,8 +355,8 @@ Si bien Python soporta aritmética de complejos, la verdad es que no es
 uno de los tipos de datos más usados. Sin embargo, es bueno saber que
 existe.
 
-Booleanos
-~~~~~~~~~
+Booleanos (bool)
+----------------
 
 Python también soporta el tipo de dato booleano:
 
@@ -423,8 +405,8 @@ Muchas formas de imprimir el número 25
     print("--{0:04x}--".format(25))  # En binario y ocupando 4 espacios y rellenando con 0
 
 
-Strings
-~~~~~~~
+Cadenas de caracteres (str)
+---------------------------
 
 En python los strings se pueden armar tanto con comillas simples (')
 como dobles ("), lo que no se puede hacer es abrir con unas y cerrar con
@@ -456,8 +438,8 @@ simples o dobles seguidas:
     print(type(cadena_caracteres))
 
 
-Índices y *Slice* en string
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Índices y Rebanadas en string
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Si queremos obtener un caracter del string podemos acceder a él
 simplemente con poner entre corchetes su posición (comenzando con la 0):
@@ -532,7 +514,7 @@ un Enter:
 
 
 Ingreso de datos desde teclado
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. activecode:: py_23
     :nocodelens:
@@ -553,7 +535,7 @@ Y para convertirlo como entero:
 
 
 None
-~~~~
+----
 
 None es el tipo de dato nulo que sólo puede tomar un valor: None. Aunque
 parezca que es muy inútil, en realidad se usa mucho.
@@ -654,10 +636,12 @@ En cambio, en Python lo podemos un poco más compacto y claro:
         print('numero1 es menor a numero2')
 
 
-Cualquier tipo de dato se lo puede evaluar como booleano. Se toma como
-falso a: \* None \* False para los bool \* cero para todo tipo de dato
-numérico: 0, 0L, 0.0, 0j \* vacío para cualquier secuencia o
-diccionario: '', (), [], {}
+Cualquier tipo de dato se lo puede evaluar como booleano. Se toma como falso a:
+
+* None
+* False para los bool
+* cero para todo tipo de dato numérico: 0, 0L, 0.0, 0j
+* vacío para cualquier secuencia o diccionario: '', (), [], {}
 
 Por lo tanto, se puede saber si una lista esta vacía o no con
 simplemente:
@@ -684,7 +668,7 @@ simplemente:
         print('Esta vacio')
 
 
-short-if
+if corto
 --------
 
 Otra forma de escribir el if en una sola línea es poner:
