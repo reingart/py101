@@ -26,7 +26,7 @@ Por ejemplo:
 
 
 Pasaje de parámetros
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 A diferencia de otros lenguajes, en Python todos los parámetros que se
 le pasan a una función son **siempre por referencia**, es decir,
@@ -62,7 +62,7 @@ ya que en realidad se modificó otra posición de memoria:
 
 
 Lista de parámetros
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 ¿Qué pasa cuando no sabemos `cuántos
 parámetros <https://docs.python.org/2/tutorial/controlflow.html#arbitrary-argument-lists>`__
@@ -86,7 +86,7 @@ nos pueden pasar, pero si sabemos qué hacer con ellos?
 
 
 Parámetros por defecto
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Algo más común que no saber la cantidad de parámetros que nos van a
 pasar es asumir que ciertos parámetros pueden no pasarlos y para ellos

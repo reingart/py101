@@ -163,7 +163,7 @@ antes con sumar?
 
 
 Retornar múltiples valores
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Y cómo podemos hacer si queremos devolver dos variables en lugar de
 una?. Una opción simple sería retornar una lista o una tupla con todos

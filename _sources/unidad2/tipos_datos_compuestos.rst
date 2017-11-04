@@ -1,6 +1,9 @@
 Tipos de datos compuestos
 =========================
 
+Los tipos de datos compuestos (que pueden contener varios valores)
+a utilizar en este curso de Python:
+
 .. toctree::
       :maxdepth: 1
 

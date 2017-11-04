@@ -11,7 +11,7 @@ Libre <http://www.softwarelibre.com.ar/diplomatura/>`_  por Mariano Reingart
 
 Repositorio: https://github.com/reingart/py101
 
-CLASE 1: Introducción
+CLASE 0: Introducción
 :::::::::::::::::::::
 
 .. toctree::
@@ -19,13 +19,19 @@ CLASE 1: Introducción
 
       unidad0/python_introduccion.rst
       unidad0/programa_python.rst
+
+CLASE 1: Datos y estructuras simples
+::::::::::::::::::::::::::::::::::::
+
+.. toctree::
+      :maxdepth: 2
+
       unidad1/tipos_datos_basicos.rst
       unidad1/estructuras_control_selectivas.rst
       unidad1/ejercicios.rst
 
-
-CLASE 2: Tipos de datos
-:::::::::::::::::::::::
+CLASE 2: Datos y estructuras repetitivas
+::::::::::::::::::::::::::::::::::::::::
 
 
 .. toctree::
@@ -41,7 +47,7 @@ CLASE 3: Funciones y Módulos
 ::::::::::::::::::::::::::::
 
 .. toctree::
-      :maxdepth: 2
+      :maxdepth: 3
 
       unidad3/funciones.rst
       unidad3/import.rst

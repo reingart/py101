@@ -1,22 +1,37 @@
 Estructuras de control selectivas
 =================================
 
+Para ejecución condicional, se utilizan las siguientes sentencias en Python:
+
 .. toctree::
       :maxdepth: 1
 
       if.rst
 
+Operadores condicionales
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-if corto
---------
+Para trabajar con valores verderos o falso, se pueden utilizar los siguientes
+operadores booleanos:
 
-Otra forma de escribir el if en una sola línea es poner:
+* ``not x`` devuelve ``True`` si x es falso, de lo contrario devuelve ``False``
+* ``x and y`` en general equivale a ``True`` si ambas (x e y) son verdaderas
+* ``x or y`` en general equivale a ``True`` si cualquiera (x o y) es verdadera
+
+Expresiones condicionales (if corto)
+------------------------------------
+
+Una forma de escribir el ``if`` y ``else`` en una sola línea es poner:
 
 .. code:: python
 
     variable = valor1 if condicion else valor2
 
-Por ejemplo:
+La variable contendrá el valor1 si la condición evalua a verdadero, de lo
+contrario contendrá el valor2.
+
+
+Por ejemplo, dado que ``%`` permite calcular el resto de una división:
 
 .. activecode:: py_32
     :nocodelens:

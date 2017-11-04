@@ -1,6 +1,8 @@
 Tipos de datos básicos
 ======================
 
+Los tipos de datos básicos (un único valor "atómico") a utilizar en este curso:
+
 .. toctree::
       :maxdepth: 1
 
@@ -25,15 +27,19 @@ la función type:
 Ingreso de datos desde teclado
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Python 3 permite solicitar al usuario que ingrese datos, utilizando la función
+``input``:
+
 .. activecode:: py_23
     :nocodelens:
 
-    numero = input('Ingrese un número: ')
-    print(numero)
-    print(type(numero))
+    cadena = input('Ingrese una cadena de caracteres: ')
+    print(cadena)
+    print(type(cadena))
 
 
-Y para convertirlo como entero:
+Y para convertirlo como entero, se puede usar el mismo tipo de datos `int`,
+que actua como función de conversión:
 
 .. activecode:: py_24
     :nocodelens:
