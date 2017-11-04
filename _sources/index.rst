@@ -17,7 +17,11 @@ CLASE 1: Introducción
 .. toctree::
       :maxdepth: 2
 
-      clase1.rst
+      unidad0/python_introduccion.rst
+      unidad0/programa_python.rst
+      unidad1/tipos_datos_basicos.rst
+      unidad1/estructuras_control_selectivas.rst
+      unidad1/ejercicios.rst
 
 
 CLASE 2: Tipos de datos
@@ -27,7 +31,11 @@ CLASE 2: Tipos de datos
 .. toctree::
       :maxdepth: 3
      
-      clase2.rst
+      unidad2/tipos_datos_compuestos.rst
+      unidad2/variables.rst
+      unidad2/estructuras_control_repetitivas.rst
+      unidad2/ejercicios.rst
+
 
 CLASE 3: Funciones y Módulos
 ::::::::::::::::::::::::::::
@@ -35,4 +43,7 @@ CLASE 3: Funciones y Módulos
 .. toctree::
       :maxdepth: 2
 
-      clase3.rst
+      unidad3/funciones.rst
+      unidad3/import.rst
+      unidad3/ejercicios.rst
+
