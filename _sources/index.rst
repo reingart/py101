@@ -53,3 +53,51 @@ CLASE 3: Funciones y Módulos
       unidad3/import.rst
       unidad3/ejercicios.rst
 
+
+Ordenamientos y búsquedas
+:::::::::::::::::::::::::
+
+.. toctree::
+      :maxdepth: 3
+
+      clase04.rst
+
+Manejo de strings
+:::::::::::::::::
+.. toctree::
+      :maxdepth: 3
+
+      clase05.rst
+
+Programación Orientada a Objetos
+::::::::::::::::::::::::::::::::
+
+.. toctree::
+      :maxdepth: 3
+
+      clase09.rst
+      clase10.rst
+
+Excepciones y Pruebas Unitarias
+:::::::::::::::::::::::::::::::
+
+.. toctree::
+      :maxdepth: 3
+
+      clase07.rst
+
+Archivos
+::::::::
+.. toctree::
+      :maxdepth: 3
+
+      clase06.rst
+
+Pilas, Colas, Listas y Generadores
+::::::::::::::::::::::::::::::::::
+.. toctree::
+      :maxdepth: 3
+
+      clase11.rst
+      clase12.rst
+
