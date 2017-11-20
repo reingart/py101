@@ -11,8 +11,8 @@ Libre <http://www.softwarelibre.com.ar/diplomatura/>`_  por Mariano Reingart
 
 Repositorio: https://github.com/reingart/py101
 
-CLASE 0: Introducción
-:::::::::::::::::::::
+0. Introducción
+:::::::::::::::
 
 .. toctree::
       :maxdepth: 2
@@ -20,57 +20,57 @@ CLASE 0: Introducción
       unidad0/python_introduccion.rst
       unidad0/programa_python.rst
 
-CLASE 1: Datos y estructuras simples
-::::::::::::::::::::::::::::::::::::
+1. Datos y estructuras simples
+::::::::::::::::::::::::::::::
 
 .. toctree::
       :maxdepth: 2
 
-      unidad1/tipos_datos_basicos.rst
-      unidad1/estructuras_control_selectivas.rst
-      unidad1/ejercicios.rst
+      1/tipos_datos_basicos.rst
+      1/estructuras_control_selectivas.rst
+      1/ejercicios.rst
 
-CLASE 2: Datos y estructuras repetitivas
-::::::::::::::::::::::::::::::::::::::::
+2. Datos y estructuras repetitivas
+::::::::::::::::::::::::::::::::::
 
 
 .. toctree::
       :maxdepth: 3
      
-      unidad2/tipos_datos_compuestos.rst
-      unidad2/variables.rst
-      unidad2/estructuras_control_repetitivas.rst
-      unidad2/ejercicios.rst
+      2/tipos_datos_compuestos.rst
+      2/variables.rst
+      2/estructuras_control_repetitivas.rst
+      2/ejercicios.rst
 
 
-CLASE 3: Funciones y Módulos
-::::::::::::::::::::::::::::
+3. Funciones y Módulos
+::::::::::::::::::::::
 
 .. toctree::
       :maxdepth: 3
 
-      unidad3/funciones.rst
-      unidad3/import.rst
-      unidad3/ejercicios.rst
+      3/funciones.rst
+      3/import.rst
+      3/ejercicios.rst
 
 
-Ordenamientos y búsquedas
-:::::::::::::::::::::::::
+4. Ordenamientos y búsquedas
+::::::::::::::::::::::::::::
 
 .. toctree::
       :maxdepth: 3
 
       clase04.rst
 
-Manejo de strings
-:::::::::::::::::
+5. Manejo de strings
+::::::::::::::::::::
 .. toctree::
       :maxdepth: 3
 
       clase05.rst
 
-Programación Orientada a Objetos
-::::::::::::::::::::::::::::::::
+6. Programación Orientada a Objetos
+:::::::::::::::::::::::::::::::::::
 
 .. toctree::
       :maxdepth: 3
@@ -78,23 +78,23 @@ Programación Orientada a Objetos
       clase09.rst
       clase10.rst
 
-Excepciones y Pruebas Unitarias
-:::::::::::::::::::::::::::::::
+7. Excepciones y Pruebas Unitarias
+::::::::::::::::::::::::::::::::::
 
 .. toctree::
       :maxdepth: 3
 
       clase07.rst
 
-Archivos
-::::::::
+8. Archivos
+::::::::::
 .. toctree::
       :maxdepth: 3
 
       clase06.rst
 
-Pilas, Colas, Listas y Generadores
-::::::::::::::::::::::::::::::::::
+9. Pilas, Colas, Listas y Generadores
+:::::::::::::::::::::::::::::::::::::
 .. toctree::
       :maxdepth: 3
 
