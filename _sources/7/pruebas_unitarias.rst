@@ -94,7 +94,9 @@ En la versión 2.1 de python se incluyó el módulo
 uno de los que usualmente se utiliza para implementar estas pruebas. La
 estructura de un archivo que contenga las pruebas debe ser:
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
+
 
     # encoding: utf-8
     import unittest  # Importar el módulo unittest

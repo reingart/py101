@@ -1,21 +1,3 @@
-
-.. raw:: html
-
-   <!--
-   5/11
-   Cortes de control
-   Pruebas Unitarias(Andres)
-   CLASE DE LABORATORIO 
-   -->
-
-.. raw:: html
-
-   <!--
-   # Corte de control
-
-   TODO: Hacer
-   -->
-
 Excepciones
 ===========
 
@@ -24,50 +6,33 @@ programador y/o usuario que ha ocurrido un error. Si la excepción no es
 controlada por el desarrollador ésta llega hasta el usuario y termina
 abruptamente la ejecución del sistema. Por ejemplo:
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
 
-    print 1/0
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    ZeroDivisionError                         Traceback (most recent call last)
-
-    <ipython-input-11-e19d6e6ac7e1> in <module>()
-    ----> 1 print 1/0
-    
-
-    ZeroDivisionError: integer division or modulo by zero
+    print(1/0)
 
 
 Pero no hay que tenerle miedo a las excepciones, sólo hay que tenerlas
 en cuenta y controlarlas en el caso de que ocurran:
 
-.. code:: python
+.. activecode:: py_02
+    :nocodelens:
 
     dividendo = 1
     divisor = 0
-    print 'Intentare hacer la división de %d/%d' % (dividendo, divisor)
+    print('Intentare hacer la división de %d/%d' % (dividendo, divisor))
     try:
         resultado = dividendo / divisor
-        print resultado
+        print(resultado)
     except ZeroDivisionError:
-        print 'No se puede hacer la división ya que el divisor es 0.'
-
-
-.. parsed-literal::
-
-    Intentare hacer la división de 1/0
-    No se puede hacer la división ya que el divisor es 0.
+        print('No se puede hacer la división ya que el divisor es 0.')
 
 
 Pero supongamos que implementamos la regla de tres de la siguiente
 forma:
 
-.. code:: python
+.. activecode:: py_03
+    :nocodelens:
 
     def dividir(x, y):
         return x/y
@@ -78,51 +43,18 @@ forma:
     
     # Si de 28 alumnos, aprobaron 15, el porcentaje de aprobados es de...
     porcentaje_de_aprobados = regla_de_tres(28, 15, 100)
-    print 'Porcentaje de aprobados: %0.2f %%' % porcentaje_de_aprobados
+    print('Porcentaje de aprobados: %0.2f %%' % porcentaje_de_aprobados)
 
-
-.. parsed-literal::
-
-    Porcentaje de aprobados: 53.00 %
 
 
 En cambio, si le pasamos 0 en el lugar de x:
 
-.. code:: python
+.. activecode:: py_04
+    :nocodelens:
+    :include: py_03
 
     resultado = regla_de_tres(0, 13, 100)
-    print 'Porcentaje de aprobados: %0.2f %%' % resultado
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    ZeroDivisionError                         Traceback (most recent call last)
-
-    <ipython-input-14-9a6333da0823> in <module>()
-    ----> 1 resultado = regla_de_tres(0, 13, 100)
-          2 print 'Porcentaje de aprobados: %0.2f %%' % resultado
-
-
-    <ipython-input-13-745c31bab81a> in regla_de_tres(x, y, z)
-          3 
-          4 def regla_de_tres(x, y, z):
-    ----> 5     return dividir(z*y, x)
-          6 
-          7 
-
-
-    <ipython-input-13-745c31bab81a> in dividir(x, y)
-          1 def dividir(x, y):
-    ----> 2     return x/y
-          3 
-          4 def regla_de_tres(x, y, z):
-          5     return dividir(z*y, x)
-
-
-    ZeroDivisionError: integer division or modulo by zero
+    print('Porcentaje de aprobados: %0.2f %%' % resultado)
 
 
 Acá podemos ver todo el *traceback* o *stacktrace*, que son el cómo se
@@ -136,7 +68,8 @@ encerrando la línea ``x/y``, ya que en ese punto no tenemos toda la
 información que necesitamos para informarle correctamente al usuario,
 por lo que podemos ponerla en:
 
-.. code:: python
+.. activecode:: py_05
+    :nocodelens:
 
     def dividir(x, y):
         return x/y
@@ -146,24 +79,20 @@ por lo que podemos ponerla en:
         try:
             resultado = dividir(z*y, x)
         except ZeroDivisionError:
-            print 'No se puede calcular la regla de tres ' \
-                  'porque el divisor es 0'
+            print('No se puede calcular la regla de tres '
+                  'porque el divisor es 0')
             
         return resultado
             
-    print regla_de_tres(0, 1, 2)
+    print(regla_de_tres(0, 1, 2))
 
-
-.. parsed-literal::
-
-    No se puede calcular la regla de tres porque el divisor es 0
-    0
 
 
 Pero en este caso igual muestra 0, por lo que si queremos, podemos poner
 los try/except incluso más arriba en el stacktrace:
 
-.. code:: python
+.. activecode:: py_06
+    :nocodelens:
 
     def dividir(x, y):
         return x/y
@@ -172,16 +101,11 @@ los try/except incluso más arriba en el stacktrace:
         return dividir(z*y, x)
             
     try:
-        print regla_de_tres(0, 1, 2)
+        print(regla_de_tres(0, 1, 2))
     except ZeroDivisionError:
-        print 'No se puede calcular la regla de tres ' \
-              'porque el divisor es 0'
+        print('No se puede calcular la regla de tres '
+              'porque el divisor es 0')
 
-
-
-.. parsed-literal::
-
-    No se puede calcular la regla de tres porque el divisor es 0
 
 
 Todos los casos son distintos y no hay UN lugar ideal dónde capturar la
@@ -197,100 +121,62 @@ pueda lanzar un error en esa línea que supuestamente es segura: En
 algunos casos tenemos en cuenta que el código puede lanzar una excepción
 como la de ``ZeroDivisionError``, pero eso puede no ser suficiente:
 
-.. code:: python
+.. activecode:: py_07
+    :nocodelens:
 
     def dividir_numeros(x, y):
         try:
             resultado = x/y
-            print 'El resultado es: %s' % resultado
+            print('El resultado es: %s' % resultado)
         except ZeroDivisionError:
-            print 'ERROR: Ha ocurrido un error por mezclar tipos de datos'
+            print('ERROR: Ha ocurrido un error por mezclar tipos de datos')
     
     dividir_numeros(1, 0)
     dividir_numeros(10, 2)
     dividir_numeros("10", 2)
 
-
-.. parsed-literal::
-
-    ERROR: Ha ocurrido un error por mezclar tipos de datos
-    El resultado es: 5
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    <ipython-input-17-0976f95f1946> in <module>()
-          8 dividir_numeros(1, 0)
-          9 dividir_numeros(10, 2)
-    ---> 10 dividir_numeros("10", 2)
-    
-
-    <ipython-input-17-0976f95f1946> in dividir_numeros(x, y)
-          1 def dividir_numeros(x, y):
-          2     try:
-    ----> 3         resultado = x/y
-          4         print 'El resultado es: %s' % resultado
-          5     except ZeroDivisionError:
-
-
-    TypeError: unsupported operand type(s) for /: 'str' and 'int'
 
 
 En esos casos podemos capturar más de una excepción de la siguiente
 forma:
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
 
     def dividir_numeros(x, y):
         try:
             resultado = x/y
-            print 'El resultado es: %s' % resultado
+            print('El resultado es: %s' % resultado)
         except TypeError:
-            print 'ERROR: Ha ocurrido un error por mezclar tipos de datos'
+            print('ERROR: Ha ocurrido un error por mezclar tipos de datos')
         except ZeroDivisionError:
-            print 'ERROR: Ha ocurrido un error de división por cero'
+            print('ERROR: Ha ocurrido un error de división por cero')
         except Exception:
-            print 'ERROR: Ha ocurrido un error inesperado'
+            print('ERROR: Ha ocurrido un error inesperado')
     
     dividir_numeros(1, 0)
     dividir_numeros(10, 2)
     dividir_numeros("10", 2)
 
-
-.. parsed-literal::
-
-    ERROR: Ha ocurrido un error de división por cero
-    El resultado es: 5
-    ERROR: Ha ocurrido un error por mezclar tipos de datos
 
 
 Incluso, si queremos que los dos errores muestren el mismo mensaje
 podemos capturar ambas excepciones juntas:
 
-.. code:: python
+.. activecode:: py_09
+    :nocodelens:
 
     def dividir_numeros(x, y):
         try:
             resultado = x/y
-            print 'El resultado es: %s' % resultado
+            print('El resultado es: %s' % resultado)
         except (ZeroDivisionError, TypeError):
-            print 'ERROR: No se puede calcular la división'
+            print('ERROR: No se puede calcular la división')
     
     dividir_numeros(1, 0)
     dividir_numeros(10, 2)
     dividir_numeros("10", 2)
 
-
-.. parsed-literal::
-
-    ERROR: No se puede calcular la división
-    El resultado es: 5
-    ERROR: No se puede calcular la división
 
 
 Jerarquía de excepciones
@@ -302,32 +188,24 @@ ocurrir siempre se puede poner una excepción de mayor jerarquía:
 
 Por lo que el error de división por cero se puede evitar como:
 
-.. code:: python
+.. activecode:: py_10
+    :nocodelens:
 
     try:
-        print 1/0
+        print(1/0)
     except ZeroDivisionError:
-        print 'Ha ocurrido un error de división por cero'
-
-
-.. parsed-literal::
-
-    Ha ocurrido un error de división por cero
+        print('Ha ocurrido un error de división por cero')
 
 
 Y también como:
 
-.. code:: python
+.. activecode:: py_11
+    :nocodelens:
 
     try:
-        print 1/0
+        print(1/0)
     except Exception:
-        print 'Ha ocurrido un error inesperado'
-
-
-.. parsed-literal::
-
-    Ha ocurrido un error inesperado
+        print('Ha ocurrido un error inesperado')
 
 
 Si bien siempre se puede poner Exception en lugar del tipo de excepción
@@ -339,18 +217,20 @@ el error que se produjo, o que sea de mayor jerarquía. Por lo tanto, es
 recomendable poner siempre las excepciones más específicas al principio
 y las más generales al final:
 
-.. code:: python
+.. activecode:: py_12
+    :nocodelens:
+
 
     def dividir_numeros(x, y):
         try:
             resultado = x/y
-            print 'El resultado es: %s' % resultado
+            print('El resultado es: %s' % resultado)
         except TypeError:
-            print 'ERROR: Ha ocurrido un error por mezclar tipos de datos'
+            print('ERROR: Ha ocurrido un error por mezclar tipos de datos')
         except ZeroDivisionError:
-            print 'ERROR: Ha ocurrido un error de división por cero'
+            print('ERROR: Ha ocurrido un error de división por cero')
         except Exception:
-            print 'ERROR: Ha ocurrido un error inesperado'
+            print('ERROR: Ha ocurrido un error inesperado')
 
 Si el error no es capturado por ninguna clausula se propaga de la misma
 forma que si no se hubiera puesto nada.
@@ -365,89 +245,49 @@ se ejecutará **sólo si no ocurrió ningún error**. \* **finally**: se usa
 para definir un bloque de código que se ejecutará **siempre**,
 independientemente de si se lanzó una excepción o no.
 
-.. code:: python
+.. activecode:: py_13
+    :nocodelens:
+
 
     def dividir_numeros(x, y):
         try:
             resultado = x/y
-            print 'El resultado es {}'.format(resultado)
+            print('El resultado es {}'.format(resultado))
         except ZeroDivisionError:
-            print 'Error: División por cero'
+            print('Error: División por cero')
         else:
-            print 'Este mensaje se mostrará sólo si no ocurre ningún error'
+            print('Este mensaje se mostrará sólo si no ocurre ningún error')
         finally: 
-            print 'Este bloque de código se muestra siempre'
+            print('Este bloque de código se muestra siempre')
     
     dividir_numeros(1, 0)
-    print '-------------'
+    print('-------------')
     dividir_numeros(10, 2)
-
-
-.. parsed-literal::
-
-    Error: División por cero
-    Este bloque de código se muestra siempre
-    -------------
-    El resultado es 5
-    Este mensaje se mostrará sólo si no ocurre ningún error
-    Este bloque de código se muestra siempre
 
 
 Pero entonces, ¿por qué no poner ese código dentro del ``try-except``?.
 Porque tal vez no queremos capturar con las cláusulas ``except`` lo que
 se ejecute en ese bloque de código:
 
-.. code:: python
+.. activecode:: py_14
+    :nocodelens:
+
 
     def dividir_numeros(x, y):
         try:
             resultado = x/y
-            print 'El resultado es {}'.format(resultado)
+            print('El resultado es {}'.format(resultado))
         except ZeroDivisionError:
-            print 'Error: División por cero'
+            print('Error: División por cero')
         else:
-            print 'Ahora hago que ocurra una excepción'
-            print 1/0
+            print('Ahora hago que ocurra una excepción')
+            print(1/0)
         finally: 
-            print 'Este bloque de código se muestra siempre'
+            print('Este bloque de código se muestra siempre')
     
     dividir_numeros(1, 0)
-    print '-------------'
+    print('-------------')
     dividir_numeros(10, 2)
-
-
-.. parsed-literal::
-
-    Error: División por cero
-    Este bloque de código se muestra siempre
-    -------------
-    El resultado es 5
-    Ahora hago que ocurra una excepción
-    Este bloque de código se muestra siempre
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    ZeroDivisionError                         Traceback (most recent call last)
-
-    <ipython-input-24-a9e50d1c2355> in <module>()
-         13 dividir_numeros(1, 0)
-         14 print '-------------'
-    ---> 15 dividir_numeros(10, 2)
-    
-
-    <ipython-input-24-a9e50d1c2355> in dividir_numeros(x, y)
-          7     else:
-          8         print 'Ahora hago que ocurra una excepción'
-    ----> 9         print 1/0
-         10     finally:
-         11         print 'Este bloque de código se muestra siempre'
-
-
-    ZeroDivisionError: integer division or modulo by zero
 
 
 Lanzar excepciones
@@ -458,55 +298,27 @@ programa termine abruptamente, pero en algunos casos somos nosotros
 mismos quienes van a querer lanzar una excepción. Y para eso, usaremos
 la palabra reservada ``raise``:
 
-.. code:: python
+.. activecode:: py_15
+    :nocodelens:
+
 
     def dividir_numeros(x, y):
         if y == 0:
             raise Exception('Error de división por cero')
         
         resultado = x/y
-        print 'El resultado es {0}'.format(resultado)
+        print('El resultado es {0}'.format(resultado))
     
     try:
         dividir_numeros(1, 0)
     except ZeroDivisionError as e:
-        print 'ERROR: División por cero'
+        print('ERROR: División por cero')
     except Exception as e:
-        print 'ERROR: ha ocurrido un error del tipo Exception'
+        print('ERROR: ha ocurrido un error del tipo Exception')
     
-    print '----------'
+    print('----------')
     dividir_numeros(1, 0)
 
-
-
-.. parsed-literal::
-
-    ERROR: ha ocurrido un error del tipo Exception
-    ----------
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    Exception                                 Traceback (most recent call last)
-
-    <ipython-input-25-e8d834f7341d> in <module>()
-         14 
-         15 print '----------'
-    ---> 16 dividir_numeros(1, 0)
-    
-
-    <ipython-input-25-e8d834f7341d> in dividir_numeros(x, y)
-          1 def dividir_numeros(x, y):
-          2     if y == 0:
-    ----> 3         raise Exception('Error de división por cero')
-          4 
-          5     resultado = x/y
-
-
-    Exception: Error de división por cero
 
 
 Crear excepciones
@@ -515,8 +327,8 @@ Crear excepciones
 Pero así como podemos usar las excepciones estándares, también podemos
 crear nuestras propias excepciones:
 
-.. code:: python
-
+.. activecode:: py_16
+    :nocodelens:
 
     class MiPropiaExcepcion(Exception):
         
@@ -525,7 +337,9 @@ crear nuestras propias excepciones:
 
 Por ejemplo:
 
-.. code:: python
+.. activecode:: py_17
+    :nocodelens:
+
 
     class ExcepcionDeDivisionPor2(Exception):
         
@@ -542,42 +356,13 @@ Por ejemplo:
     try:
         dividir_numeros(1, 2)
     except ExcepcionDeDivisionPor2:
-        print 'No se puede dividir por 2'
+        print('No se puede dividir por 2')
     
     dividir_numeros(1, 2)
 
 
-.. parsed-literal::
-
-    No se puede dividir por 2
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    ExcepcionDeDivisionPor2                   Traceback (most recent call last)
-
-    <ipython-input-26-f793162bfdde> in <module>()
-         16     print 'No se puede dividir por 2'
-         17 
-    ---> 18 dividir_numeros(1, 2)
-    
-
-    <ipython-input-26-f793162bfdde> in dividir_numeros(x, y)
-          7 def dividir_numeros(x, y):
-          8     if y == 2:
-    ----> 9         raise ExcepcionDeDivisionPor2()
-         10 
-         11     resultado = x/y
-
-
-    ExcepcionDeDivisionPor2: ERROR: No se puede dividir por dos
-
-
 Para más información, ingresar a
-https://docs.python.org/2/tutorial/errors.html
+https://docs.python.org/3/tutorial/errors.html
 
 
 
