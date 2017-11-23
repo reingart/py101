@@ -16,10 +16,11 @@ Manejo de strings
 Con los strings podemos hacer `muchas
 operaciones <https://docs.python.org/2/library/stdtypes.html#string-methods>`__:
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
 
     cadena_caracteres = "Hola mundo"
-    print dir(cadena_caracteres)
+    print(dir(cadena_caracteres))
 
 String formating
 ----------------
@@ -32,53 +33,37 @@ Existen varias formas crear, concatenar e imprimir strings:
 Para imprimir un string sólo es necesario usar la palabra
 `print <https://docs.python.org/2/library/functions.html#print>`__:
 
-.. code:: python
+.. activecode:: py_02
+    :nocodelens:
 
-    print 'Hola mundo'
-    print 'Pero el print también imprime un Enter al terminar la línea'
+    print('Hola mundo')
+    print('Pero el print también imprime un Enter al terminar la línea')
 
-
-.. parsed-literal::
-
-    Hola mundo
-    Pero el print también imprime un Enter al terminar la línea
 
 
 Pero si no queremos imprimir ese último Enter lo que tenemos que hacer
 es poner una coma al final de la línea:
 
-.. code:: python
+.. activecode:: py_03
+    :nocodelens:
 
-    print 'Pero al imprimir con la coma al final',
-    print 'cambia el enter por un espacio'
-    print 'También puedo escribir lo mismo' ' en dos partes'
-    print 'Lo que puedo usar ' \
+    print('Pero al usar end', end=" ")
+    print('cambia el enter por un espacio')
+    print('También puedo escribir lo mismo' ' en dos partes')
+    print('Lo que puedo usar ' \
         'cuando un string es muy largo' \
-        'si le agrego una contrabarra'
+        'si le agrego una contrabarra')
 
-
-.. parsed-literal::
-
-    Pero al imprimir con la coma al final cambia el enter por un espacio
-    También puedo escribir lo mismo en dos partes
-    Lo que puedo usar cuando un string es muy largosi le agrego una contrabarra
 
 
 ¿Y si lo que quiero es imprimir un número pegado al string?
 
-.. code:: python
+.. activecode:: py_04
+    :nocodelens:
 
-    print 'Entonces tengo que ponerlo después de la coma:', 5
-    print 'Al que también le agrega la coma para separarlo'
-    print 'También puedo ponerlo en el medio:\nHoy es', 29, 'de Octubre' 
-
-
-.. parsed-literal::
-
-    Entonces tengo que ponerlo después de la coma: 5
-    Al que también le agrega la coma para separarlo
-    También puedo ponerlo en el medio:
-    Hoy es 29 de Octubre
+    print('Entonces tengo que ponerlo después de la coma:', 5)
+    print('Al que también le agrega la coma para separarlo')
+    print('También puedo ponerlo en el medio:\nHoy es', 29, 'de Octubre')
 
 
 `String formating <https://docs.python.org/2/library/string.html#new-string-formatting>`__
@@ -92,7 +77,7 @@ En esos casos, podemos usar la función
 
 .. code:: python
 
-    print str.format.__doc__
+    print(str.format.__doc__)
 
 
 .. parsed-literal::
@@ -106,58 +91,43 @@ En esos casos, podemos usar la función
 Format lo que hace es reemplazar las llaves con los parámetros que le
 pasen:
 
-.. code:: python
+.. activecode:: py_05
+    :nocodelens:
 
-    print 'El nombre del jugador número {0} es {1}'.format(10, 'Lionel Messi')
-
-
-.. parsed-literal::
-
-    El nombre del jugador número 10 es Lionel Messi
+    print('El nombre del jugador número {0} es {1}'.format(10, 'Lionel Messi'))
 
 
 Aunque en realidad los números no son obligatorios:
 
-.. code:: python
+.. activecode:: py_06
+    :nocodelens:
 
-    print 'El nombre del jugador número {} es {}'.format(10, 'Lionel Messi')
-
-
-.. parsed-literal::
-
-    El nombre del jugador número 10 es Lionel Messi
+    print('El nombre del jugador número {} es {}'.format(10, 'Lionel Messi'))
 
 
 Pero la ventaja de usar los números es que podemos imprimir ese
 parámetro varias veces, y no necesariamente en el órden que figura:
 
-.. code:: python
+.. activecode:: py_07
+    :nocodelens:
 
-    print '{0}{1}{0}'.format('abra', 'cad') 
-
-
-.. parsed-literal::
-
-    abracadabra
+    print('{0}{1}{0}'.format('abra', 'cad'))
 
 
 Incluso, se pueden usar parámetros nombrados:
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
 
-    print 'La nota del alumno {padron} - {nombre} es un {nota}.'. \
-        format(padron=123, nombre='Carlos Sanchez', nota=8)
-
-
-.. parsed-literal::
-
-    La nota del alumno 123 - Carlos Sanchez es un 8.
+    print('La nota del alumno {padron} - {nombre} es un {nota}.'
+        .format(padron=123, nombre='Carlos Sanchez', nota=8))
 
 
 Incluso, si en lugar de pasarle cada uno de los parámetros le pasamos un
 diccionario usando el operador \*\*
 
-.. code:: python
+.. activecode:: py_09
+    :nocodelens:
 
     alumno = {
         'padron': 123,
@@ -165,20 +135,16 @@ diccionario usando el operador \*\*
         'nota': 8
     }
     
-    print 'La nota del alumno {padron} - {nombre} es un {nota}.'.\
-        format(**alumno)
+    print('La nota del alumno {padron} - {nombre} es un {nota}.'
+        .format(**alumno))
 
-
-
-.. parsed-literal::
-
-    La nota del alumno 123 - Carlos Sanchez es un 8.
 
 
 Incluso, si lo que le pasamos es una lista, podemos acceder a una
 posición en particular:
 
-.. code:: python
+.. activecode:: py_10
+    :nocodelens:
 
     alumno = {
         'padron': 123,
@@ -186,37 +152,23 @@ posición en particular:
         'tps': [8, 9] 
     }
     
-    print 'La nota de los tps de {nombre} son {tps[0]} y {tps[1]}.'.\
-        format(**alumno)
-
-
-.. parsed-literal::
-
-    La nota de los tps de Carlos Sanchez son 8 y 9.
+    print('La nota de los tps de {nombre} son {tps[0]} y {tps[1]}.'
+        .format(**alumno))
 
 
 Incluso puedo alinear el texto que pongo usando los dos puntos (:)
 
-.. code:: python
+.. activecode:: py_11
+    :nocodelens:
 
-    print 'Imprimo un texto alineado a la |{:<20}| de 20 posiciones'.format(
-            'izquierda')
-    print 'Imprimo un texto alineado a la |{:>20}| de 20 posiciones'.format(
-            'derecha')
-    print 'Imprimo un texto |{:^20}| de 20 posiciones'.format('centrado')
-    print 'Relleno |{:#<20}| con #'.format('izquierda')
-    print 'Relleno |{:#>20}| con #'.format('derecha')
-    print 'Relleno |{:#^20}| con #'.format('centrado')
-
-
-.. parsed-literal::
-
-    Imprimo un texto alineado a la |izquierda           | de 20 posiciones
-    Imprimo un texto alineado a la |             derecha| de 20 posiciones
-    Imprimo un texto |      centrado      | de 20 posiciones
-    Relleno |izquierda###########| con #
-    Relleno |#############derecha| con #
-    Relleno |######centrado######| con #
+    print('Imprimo un texto alineado a la |{:<20}| de 20 posiciones'.format(
+            'izquierda'))
+    print('Imprimo un texto alineado a la |{:>20}| de 20 posiciones'.format(
+            'derecha'))
+    print('Imprimo un texto |{:^20}| de 20 posiciones'.format('centrado'))
+    print('Relleno |{:#<20}| con #'.format('izquierda'))
+    print('Relleno |{:#>20}| con #'.format('derecha'))
+    print('Relleno |{:#^20}| con #'.format('centrado'))
 
 
 Pueden ver más ejemplos en la `documentación oficial de
@@ -232,60 +184,41 @@ También existen varias
 `funciones <https://docs.python.org/2/library/stdtypes.html#string-methods>`__
 que podemos usar cuando trabajamos con strings:
 
-.. code:: python
+.. activecode:: py_12
+    :nocodelens:
 
     cadena_caracteres = 'Hola mundo'
-    print '"{0}" cambia a "{1}" con title'.format(cadena_caracteres, cadena_caracteres.title())
-    print '"{0}" cambia a "{1}" con lower'.format(cadena_caracteres, cadena_caracteres.lower())
-    print '"{0}" cambia a "{1} con upper"'.format(cadena_caracteres, cadena_caracteres.upper())
-    print '"{0}" cambia a "{1}" con capitalize'.format(cadena_caracteres, cadena_caracteres.capitalize())
-    print '"{0}" cambia a "{1}" cuando reemplazamos las o por 0'.format(cadena_caracteres, cadena_caracteres.replace('o', '0'))
+    print('"{0}" cambia a "{1}" con title'.format(cadena_caracteres, cadena_caracteres.title()))
+    print('"{0}" cambia a "{1}" con lower'.format(cadena_caracteres, cadena_caracteres.lower()))
+    print('"{0}" cambia a "{1} con upper"'.format(cadena_caracteres, cadena_caracteres.upper()))
+    print('"{0}" cambia a "{1}" con capitalize'.format(cadena_caracteres, cadena_caracteres.capitalize()))
+    print('"{0}" cambia a "{1}" cuando reemplazamos las o por 0'.format(cadena_caracteres, cadena_caracteres.replace('o', '0')))
     
     x = 'mi string'
     y = x.replace('i', 'AA')
-    print x, y
-    print id(x)
+    print(x, y)
+    print(id(x))
     x += 'Hola mundo'
-    print id(x)
+    print(id(x))
 
-
-
-.. parsed-literal::
-
-    "Hola mundo" cambia a "Hola Mundo" con title
-    "Hola mundo" cambia a "hola mundo" con lower
-    "Hola mundo" cambia a "HOLA MUNDO con upper"
-    "Hola mundo" cambia a "Hola mundo" con capitalize
-    "Hola mundo" cambia a "H0la mund0" cuando reemplazamos las o por 0
-    mi string mAA strAAng
-    140575646636192
-    140575646459696
 
 
 Y también podemos separar y combinar strings:
 
-.. code:: python
+.. activecode:: py_13
+    :nocodelens:
 
-    print "Hola mundo".split()
-    print "Hola mundo".split('o')
-    print "Hola mundo".split('mu')
-    print ''.join(['Hola', 'mundo'])
-    print ' '.join(['Hola', 'mundo'])
+    print("Hola mundo".split())
+    print("Hola mundo".split('o'))
+    print("Hola mundo".split('mu'))
+    print(''.join(['Hola', 'mundo']))
+    print(' '.join(['Hola', 'mundo']))
     var = '#separador#'.join(['Hola', 'mundo'])
-    print var
+    print(var)
     
     padron, nombre, nota = '12321,nom bekr,4'.split(',')
 
 
-
-.. parsed-literal::
-
-    ['Hola', 'mundo']
-    ['H', 'la mund', '']
-    ['Hola ', 'ndo']
-    Holamundo
-    Hola mundo
-    Hola#separador#mundo
 
 
 Unicodes

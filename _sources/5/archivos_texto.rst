@@ -72,7 +72,10 @@ Lectura de archivos
 Supongamos que tenemos un archivo llamado *ejemplo.txt* y tiene el
 siguiente texto:
 
-::
+.. datafile:: ejemplo.txt
+   :edit:
+   :rows: 20
+   :cols: 60
 
     Python was created in the early 1990s by Guido van Rossum at Stichting
     Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands
@@ -103,103 +106,44 @@ la cual puede recibir un parámetro que indique la cantidad de caracteres
 a leer. Si no se pasa ese parámetro el intérprete leerá todo el archivo
 y lo retornará.
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
 
     arch = open("ejemplo.txt")
     cadena = arch.read(15)
-    print "# Imprimo los primeros 15 caracteres del archivo. Tiene que ser 'Python was crea'"
-    print cadena
+    print("# Imprimo los primeros 15 caracteres del archivo. Tiene que ser 'Python was crea'")
+    print(cadena)
     
-    print "# Leo otros 7 caracteres y dejo el cursor del archivo en la siguiente posición. Tiene que ser 'ted in '"
+    print("# Leo otros 7 caracteres y dejo el cursor del archivo en la siguiente posición. Tiene que ser 'ted in '")
     cadena = arch.read(7)
-    print cadena
+    print(cadena)
     
-    print "# Ahora leo el resto del archivo."
+    print("# Ahora leo el resto del archivo.")
     cadena = arch.read()
-    print cadena
+    print(cadena)
     
-    print '# Cierro el archivo'
+    print('# Cierro el archivo')
     arch.close()
-
-
-.. parsed-literal::
-
-    # Imprimo los primeros 15 caracteres del archivo. Tiene que ser 'Python was crea'
-    Python was crea
-    # Leo otros 7 caracteres y dejo el cursor del archivo en la siguiente posición. Tiene que ser 'ted in '
-    ted in 
-    # Ahora leo el resto del archivo.
-    the early 1990s by Guido van Rossum at Stichting
-    Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands
-    as a successor of a language called ABC.  Guido remains Python's
-    principal author, although it includes many contributions from others.
-    
-    In 1995, Guido continued his work on Python at the Corporation for
-    National Research Initiatives (CNRI, see http://www.cnri.reston.va.us)
-    in Reston, Virginia where he released several versions of the
-    software.
-    
-    In May 2000, Guido and the Python core development team moved to
-    BeOpen.com to form the BeOpen PythonLabs team.  In October of the same
-    year, the PythonLabs team moved to Digital Creations (now Zope
-    Corporation, see http://www.zope.com).  In 2001, the Python Software
-    Foundation (PSF, see http://www.python.org/psf/) was formed, a
-    non-profit organization created specifically to own Python-related
-    Intellectual Property.  Zope Corporation is a sponsoring member of
-    the PSF.
-    
-    All Python releases are Open Source (see http://www.opensource.org for
-    the Open Source Definition).  Historically, most, but not all, Python
-    releases have also been GPL-compatible.
-    
-    # Cierro el archivo
 
 
 La única condición que tenemos para usar este método es que el archivo
 lo hayamos abierto en modo lectura.
 
-.. code:: python
+.. activecode:: py_02
+    :nocodelens:
 
-    arch2 = open("ejemplo2.txt", "w")
+    # en el navegador no se pueden escribir archivos;
+    # en su máquina la siguiente instrucción genera un error:
+    arch2 = open("ejemplo.txt", "w")
     arch2.read()
 
 
-::
+.. activecode:: py_03
+    :nocodelens:
 
-
-    ---------------------------------------------------------------------------
-
-    IOError                                   Traceback (most recent call last)
-
-    <ipython-input-17-14fdc854ce4e> in <module>()
-          1 arch2 = open("ejemplo2.txt", "w")
-    ----> 2 arch2.read()
-    
-
-    IOError: File not open for reading
-
-
-.. code:: python
-
-    # Y si intentamos con un append?
-    arch3 = open("ejemplo1.txt", "a")
+    # Y si intentamos con un append? (idem)
+    arch3 = open("ejemplo.txt", "a")
     arch3.read()
-
-
-::
-
-
-    ---------------------------------------------------------------------------
-
-    IOError                                   Traceback (most recent call last)
-
-    <ipython-input-18-2ccb79e17cdc> in <module>()
-          1 # Y si intentamos con un append?
-          2 arch3 = open("ejemplo1.txt", "a")
-    ----> 3 arch3.read()
-    
-
-    IOError: File not open for reading
 
 
 Otra primitiva que podemos usar es
@@ -209,21 +153,16 @@ que al igual que
 también puede recibir un parámetro que indique la cantidad máxima de
 bytes a leer. Si no se le pasa ningún parámetro, lee toda la línea.
 
-.. code:: python
+.. activecode:: py_04
+    :nocodelens:
 
     arch = open("ejemplo.txt")
     linea = arch.readline()  # Notar que también imprime el Enter o \n
-    print linea
+    print(linea)
     linea = arch.readline(7)  # La segunda línea es 'Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands'
-    print linea
+    print(linea)
     arch.close()
 
-
-.. parsed-literal::
-
-    Python was created in the early 1990s by Guido van Rossum at Stichting
-    
-    Mathema
 
 
 Pero no es necesario que leamos de a una sola línea, sino que también
@@ -231,17 +170,14 @@ podemos leer todas las líneas del archivo y guardarlas en una lista
 haciendo uso de la primitiva
 `**readlines** <https://docs.python.org/2/library/stdtypes.html#file.readlines>`__.
 
-.. code:: python
+.. activecode:: py_05
+    :nocodelens:
 
     arch = open("ejemplo.txt")
     lineas = arch.readlines()
-    print lineas
+    print(lineas)
     arch.close()
 
-
-.. parsed-literal::
-
-    ['Python was created in the early 1990s by Guido van Rossum at Stichting\n', 'Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands\n', "as a successor of a language called ABC.  Guido remains Python's\n", 'principal author, although it includes many contributions from others.\n', '\n', 'In 1995, Guido continued his work on Python at the Corporation for\n', 'National Research Initiatives (CNRI, see http://www.cnri.reston.va.us)\n', 'in Reston, Virginia where he released several versions of the\n', 'software.\n', '\n', 'In May 2000, Guido and the Python core development team moved to\n', 'BeOpen.com to form the BeOpen PythonLabs team.  In October of the same\n', 'year, the PythonLabs team moved to Digital Creations (now Zope\n', 'Corporation, see http://www.zope.com).  In 2001, the Python Software\n', 'Foundation (PSF, see http://www.python.org/psf/) was formed, a\n', 'non-profit organization created specifically to own Python-related\n', 'Intellectual Property.  Zope Corporation is a sponsoring member of\n', 'the PSF.\n', '\n', 'All Python releases are Open Source (see http://www.opensource.org for\n', 'the Open Source Definition).  Historically, most, but not all, Python\n', 'releases have also been GPL-compatible.\n']
 
 
 Sin embargo, la forma más *Pythonic* de leer el archivo por líneas es
@@ -249,39 +185,15 @@ usando la estructura **for** y quedaría casi como lo diríamos en
 castellano: *"Para cada línea del archivo*. Por ejemplo, si queremos
 imprimir la cantidad de caracteres de cada línea podríamos hacer:
 
-.. code:: python
+.. activecode:: py_06
+    :nocodelens:
 
     arch = open("ejemplo.txt")
     for linea in arch:
-        print len(linea)
+        print(len(linea))
     
     arch.close()
 
-
-.. parsed-literal::
-
-    71
-    69
-    65
-    71
-    1
-    67
-    71
-    62
-    10
-    1
-    65
-    71
-    63
-    69
-    63
-    67
-    67
-    9
-    1
-    71
-    70
-    40
 
 
 Escritura de archivos
@@ -304,50 +216,48 @@ considerable se lo manda a escribir al disco. Otra forma de asegurarse
 que se haga la escritura es usando la primitiva *flush*, la cual guarda
 en el disco el contenido del buffer y lo vacía.
 
-.. code:: python
+.. datafile:: ejemplo2.txt
+   :hide:
 
+   Es la primer cadenaSeguida de la segunda con un fin de linea
+   1. Primero de la lista sin fin de línea. 2. Segundo string con fin de línea.
+   3. Tercero conn.
+   4. y último.
+
+
+.. activecode:: py_07
+    :nocodelens:
+
+    # en el navegador no se pueden crear archivos, este es un ejemplo simulado:
     arch2 = open("ejemplo2.txt", "w")
     arch2.write("Es la primer cadena")
     arch2.write("Seguida de la segunda con un fin de linea\n")
-    arch2.writelines(["1. Primero de la lista sin fin de línea. ", "2. Segundo string con fin de línea.\n", "3. Tercero con\\n.\n", "4. y último."])
+    for linea in ["1. Primero de la lista sin fin de línea. ", 
+                  "2. Segundo string con fin de línea.\n",
+                  "3. Tercero con\\n.\n", "4. y último."]:
+        arch2.write(linea)
     arch2.flush()
     arch2.close()
     arch2 = open("ejemplo2.txt", "r+a")
     strfile = arch2.read()
-    print strfile
+    print(strfile)
 
-
-.. parsed-literal::
-
-    Es la primer cadenaSeguida de la segunda con un fin de linea
-    1. Primero de la lista sin fin de línea. 2. Segundo string con fin de línea.
-    3. Tercero con\n.
-    4. y último.
 
 
 ¿Y qué pasa si le quiero agregar algunas líneas a este archivo?
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
 
+    # en el navegador no se pueden modificar archivos, correrlo en su máquina:
     arch2.write("Esto lo estoy agregando.\n.")
     arch2.writelines("Y estas dos líneas también con un \\n al final\n de cada una.\n")
     arch2.flush()
     arch2 = open("ejemplo2.txt", "r")  # El open hace que me mueva a la primer posición del archivo.
-    print arch2.read()
+    print(arch2.read())
     arch2.close()
 
-
-
-.. parsed-literal::
-
-    Es la primer cadenaSeguida de la segunda con un fin de linea
-    1. Primero de la lista sin fin de línea. 2. Segundo string con fin de línea.
-    3. Tercero con\n.
-    4. y último.Esto lo estoy agregando.
-    .Y estas dos líneas también con un \n al final
-     de cada una.
     
-
 
 Otra forma de asegurarse que se escriba lo que hay en el disco es
 cerrándolo.
@@ -365,51 +275,38 @@ igual a 0 \* **1:** La posición es relativa a la posición actual; puede
 ser positiva o negativa \* **2:** La posición es desde el final del
 archivo, por lo que debe ser negativa
 
-.. code:: python
+.. activecode:: py_09
+    :nocodelens:
 
     arch = open("ejemplo.txt")  
     arch.seek(30)        # Voy a la posición número 30 del archivo
-    print arch.read(7)   # Debería salir 'y 1990s'
+    print(arch.read(7))  # Debería salir 'y 1990s'
     arch.seek(-5,1)      # Me muevo 5 posiciones para atrás desde mi posición actual.
-    print arch.read(7)   # Debería imprimir '1990s b'
+    print(arch.read(7))  # Debería imprimir '1990s b'
     arch.seek(-12,2)     # Me muevo a la posición número 12, comenzando a contar desde el final.
-    print arch.read(10)  # Debería imprimir 'compatible'
+    print(arch.read(10)) # Debería imprimir 'compatible'
     
     arch.close()
 
-
-.. parsed-literal::
-
-    y 1990s
-    1990s b
-    compatible
 
 
 Y así como podemos movernos en un archivo, también podemos averiguar
 nuestra posición usando la primitiva
 `**tell()** <https://docs.python.org/2/library/stdtypes.html#file.tell>`__.
 
-.. code:: python
+.. activecode:: py_10
+    :nocodelens:
 
     arch = open("ejemplo.txt")  
     arch.seek(30)
-    print arch.tell()    # Debería imprimir 30
+    print(arch.tell())   # Debería imprimir 30
     arch.seek(-5,1)      # Retrocedo 5 posiciones
-    print arch.tell()    # Debería imprimir 25
+    print(arch.tell())   # Debería imprimir 25
     arch.seek(-12,2)     # Voy a 12 posiciones antes del fin de archivo
-    print arch.tell()    # Debería imprimir 1132
-    print arch.read(10)  # Leo 10 caracteres
-    print arch.tell()    # Debería imprimir 1142
+    print(arch.tell())   # Debería imprimir 1132
+    print(arch.read(10)) # Leo 10 caracteres
+    print(arch.tell())   # Debería imprimir 1142
 
-
-
-.. parsed-literal::
-
-    30
-    25
-    1132
-    compatible
-    1142
 
 
 ¿Cómo recorrer todo un archivo?
@@ -419,7 +316,8 @@ Cuando llegamos al final de un archivo de texto usando la función *read*
 o *readline* Python no arroja ningún valor, pero tampoco retorna ningún
 caracter, por lo que podríamos usar eso como condición de corte:
 
-.. code:: python
+.. activecode:: py_11
+    :nocodelens:
 
     arch = open("ejemplo.txt")  
     
@@ -430,59 +328,10 @@ caracter, por lo que podríamos usar eso como condición de corte:
     
     for x in range(1, 25):
         linea = arch.readline()
-        print '{:2}[{:02}] - {}'.format(x, len(linea), linea)
+        print('{:2}[{:02}] - {}'.format(x, len(linea), linea))
     
     arch.close()
 
-
-.. parsed-literal::
-
-     1[71] - Python was created in the early 1990s by Guido van Rossum at Stichting
-    
-     2[69] - Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands
-    
-     3[65] - as a successor of a language called ABC.  Guido remains Python's
-    
-     4[71] - principal author, although it includes many contributions from others.
-    
-     5[01] - 
-    
-     6[67] - In 1995, Guido continued his work on Python at the Corporation for
-    
-     7[71] - National Research Initiatives (CNRI, see http://www.cnri.reston.va.us)
-    
-     8[62] - in Reston, Virginia where he released several versions of the
-    
-     9[10] - software.
-    
-    10[01] - 
-    
-    11[65] - In May 2000, Guido and the Python core development team moved to
-    
-    12[71] - BeOpen.com to form the BeOpen PythonLabs team.  In October of the same
-    
-    13[63] - year, the PythonLabs team moved to Digital Creations (now Zope
-    
-    14[69] - Corporation, see http://www.zope.com).  In 2001, the Python Software
-    
-    15[63] - Foundation (PSF, see http://www.python.org/psf/) was formed, a
-    
-    16[67] - non-profit organization created specifically to own Python-related
-    
-    17[67] - Intellectual Property.  Zope Corporation is a sponsoring member of
-    
-    18[09] - the PSF.
-    
-    19[01] - 
-    
-    20[71] - All Python releases are Open Source (see http://www.opensource.org for
-    
-    21[70] - the Open Source Definition).  Historically, most, but not all, Python
-    
-    22[40] - releases have also been GPL-compatible.
-    
-    23[00] - 
-    24[00] - 
 
 
 Como pueden ver, todas las líneas hasta la 22 (que es la última linea
@@ -494,7 +343,8 @@ en ningún momento el interprete nos lanzó una excepción. Por lo tanto,
 si no sabemos la longitud del archivo como era este caso, podríamos usar
 esta información para darnos cuenta cuándo dejar de leer:
 
-.. code:: python
+.. activecode:: py_12
+    :nocodelens:
 
     arch = open("ejemplo.txt")  
     
@@ -507,64 +357,18 @@ esta información para darnos cuenta cuándo dejar de leer:
     while linea:  # Es decir, mientras me devuelva algo 
                   # distinto al sting vacío
         x += 1
-        print '{:2}[{:02}] - {}'.format(x, len(linea), linea)
+        print('{:2}[{:02}] - {}'.format(x, len(linea), linea))
         linea = arch.readline()
     
     arch.close()
 
 
-.. parsed-literal::
-
-     1[71] - Python was created in the early 1990s by Guido van Rossum at Stichting
-    
-     2[69] - Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands
-    
-     3[65] - as a successor of a language called ABC.  Guido remains Python's
-    
-     4[71] - principal author, although it includes many contributions from others.
-    
-     5[01] - 
-    
-     6[67] - In 1995, Guido continued his work on Python at the Corporation for
-    
-     7[71] - National Research Initiatives (CNRI, see http://www.cnri.reston.va.us)
-    
-     8[62] - in Reston, Virginia where he released several versions of the
-    
-     9[10] - software.
-    
-    10[01] - 
-    
-    11[65] - In May 2000, Guido and the Python core development team moved to
-    
-    12[71] - BeOpen.com to form the BeOpen PythonLabs team.  In October of the same
-    
-    13[63] - year, the PythonLabs team moved to Digital Creations (now Zope
-    
-    14[69] - Corporation, see http://www.zope.com).  In 2001, the Python Software
-    
-    15[63] - Foundation (PSF, see http://www.python.org/psf/) was formed, a
-    
-    16[67] - non-profit organization created specifically to own Python-related
-    
-    17[67] - Intellectual Property.  Zope Corporation is a sponsoring member of
-    
-    18[09] - the PSF.
-    
-    19[01] - 
-    
-    20[71] - All Python releases are Open Source (see http://www.opensource.org for
-    
-    21[70] - the Open Source Definition).  Historically, most, but not all, Python
-    
-    22[40] - releases have also been GPL-compatible.
-    
-
 
 Aunque Python también nos ofrece otra forma de recorer un archivo, y es
 usando una de las estructuras que ya conocemos: **for**
 
-.. code:: python
+.. activecode:: py_13
+    :nocodelens:
 
     arch = open("ejemplo.txt")  
     
@@ -574,63 +378,16 @@ usando una de las estructuras que ya conocemos: **for**
     x = 0
     for linea in arch:
         x += 1
-        print '{:2}[{:02}] - {}'.format(x, len(linea), linea)
+        print('{:2}[{:02}] - {}'.format(x, len(linea), linea))
     
     arch.close()
 
 
 
-.. parsed-literal::
-
-     1[71] - Python was created in the early 1990s by Guido van Rossum at Stichting
-    
-     2[69] - Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands
-    
-     3[65] - as a successor of a language called ABC.  Guido remains Python's
-    
-     4[71] - principal author, although it includes many contributions from others.
-    
-     5[01] - 
-    
-     6[67] - In 1995, Guido continued his work on Python at the Corporation for
-    
-     7[71] - National Research Initiatives (CNRI, see http://www.cnri.reston.va.us)
-    
-     8[62] - in Reston, Virginia where he released several versions of the
-    
-     9[10] - software.
-    
-    10[01] - 
-    
-    11[65] - In May 2000, Guido and the Python core development team moved to
-    
-    12[71] - BeOpen.com to form the BeOpen PythonLabs team.  In October of the same
-    
-    13[63] - year, the PythonLabs team moved to Digital Creations (now Zope
-    
-    14[69] - Corporation, see http://www.zope.com).  In 2001, the Python Software
-    
-    15[63] - Foundation (PSF, see http://www.python.org/psf/) was formed, a
-    
-    16[67] - non-profit organization created specifically to own Python-related
-    
-    17[67] - Intellectual Property.  Zope Corporation is a sponsoring member of
-    
-    18[09] - the PSF.
-    
-    19[01] - 
-    
-    20[71] - All Python releases are Open Source (see http://www.opensource.org for
-    
-    21[70] - the Open Source Definition).  Historically, most, but not all, Python
-    
-    22[40] - releases have also been GPL-compatible.
-    
-
-
 O, incluso, usar enumerate para saber qué línea estoy leyendo:
 
-.. code:: python
+.. activecode:: py_14
+    :nocodelens:
 
     arch = open("ejemplo.txt")  
     
@@ -639,58 +396,9 @@ O, incluso, usar enumerate para saber qué línea estoy leyendo:
     
     # Usando enumerate y comenzando en 1
     for x, linea in enumerate(arch, 1):
-        print '{:2}[{:02}] - {}'.format(x, len(linea), linea)
+        print('{:2}[{:02}] - {}'.format(x, len(linea), linea))
     
     arch.close()
-
-
-
-.. parsed-literal::
-
-     1[71] - Python was created in the early 1990s by Guido van Rossum at Stichting
-    
-     2[69] - Mathematisch Centrum (CWI, see http://www.cwi.nl) in the Netherlands
-    
-     3[65] - as a successor of a language called ABC.  Guido remains Python's
-    
-     4[71] - principal author, although it includes many contributions from others.
-    
-     5[01] - 
-    
-     6[67] - In 1995, Guido continued his work on Python at the Corporation for
-    
-     7[71] - National Research Initiatives (CNRI, see http://www.cnri.reston.va.us)
-    
-     8[62] - in Reston, Virginia where he released several versions of the
-    
-     9[10] - software.
-    
-    10[01] - 
-    
-    11[65] - In May 2000, Guido and the Python core development team moved to
-    
-    12[71] - BeOpen.com to form the BeOpen PythonLabs team.  In October of the same
-    
-    13[63] - year, the PythonLabs team moved to Digital Creations (now Zope
-    
-    14[69] - Corporation, see http://www.zope.com).  In 2001, the Python Software
-    
-    15[63] - Foundation (PSF, see http://www.python.org/psf/) was formed, a
-    
-    16[67] - non-profit organization created specifically to own Python-related
-    
-    17[67] - Intellectual Property.  Zope Corporation is a sponsoring member of
-    
-    18[09] - the PSF.
-    
-    19[01] - 
-    
-    20[71] - All Python releases are Open Source (see http://www.opensource.org for
-    
-    21[70] - the Open Source Definition).  Historically, most, but not all, Python
-    
-    22[40] - releases have also been GPL-compatible.
-    
 
 
 
