@@ -62,6 +62,7 @@ Repositorio: https://github.com/reingart/py101
 
       4/ordenamiento.rst
       4/busquedas.rst
+      4/funciones_anonimas.rst
       4/ejercicios.rst
 
 5. Archivos de texto
