@@ -1,15 +1,37 @@
+.. Py101: Programación Python I Interactivo
+
+.. meta::
+   :description: An interactive version de apuntes universitarios
+   :keywords: python, python3, introducción, ciencias de la computación, informática
+
 ===========================================
 Programación Python I Interactivo
 ===========================================
 
-.. Este libro interactivo ha sido adaptado desde el repositorio
-`Material para las clases de FI UBA 75.40 - Algoritmos y programación I <https://github.com/gsorianob/fiuba-python>`_
-(Gonzalo Soriano)
+.. raw:: html
 
-Adaptado y convertido a libro interactivo para la `Diplomatura en Software
-Libre <http://www.softwarelibre.com.ar/diplomatura/>`_  por Mariano Reingart
+   <style>
+   button.reveal_button {
+       margin-left: auto;
+       margin-right: auto;
+   }
+   </style>
 
-Repositorio: https://github.com/reingart/py101
+
+.. reveal:: about
+   :showtitle: Acerca de Py101
+   :modal:
+   :modalTitle: Acerca de este Proyecto Py101
+
+   Este libro interactivo ha sido adaptado desde el repositorio
+   `Material para las clases de FI UBA 75.40 - Algoritmos y programación I <https://github.com/gsorianob/fiuba-python>`_
+   (Gonzalo Soriano)
+
+   Adaptado y convertido a libro interactivo para la `Diplomatura en Software
+   Libre <http://www.softwarelibre.com.ar/diplomatura/>`_  por Mariano Reingart
+
+   Repositorio: https://github.com/reingart/py101
+
 
 0. Introducción
 :::::::::::::::
