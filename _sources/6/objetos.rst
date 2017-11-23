@@ -82,7 +82,8 @@ upper, capitalize, center, expandtabs, etc. Para crear un objeto de una
 en particular lo que tenemos que hacer es invocar a la clase poniendo su
 nombre seguido de paréntesis. Por ejemplo:
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
 
     mi_string = str()
     mi_lista = list()
@@ -91,7 +92,9 @@ Y para invocar uno de sus métodos sólo es necesario usar una variable la
 clase en cuestión, poner un punto, y el nombre de un método seguido por
 paréntesis:
 
-.. code:: python
+.. activecode:: py_02
+    :nocodelens:
+    :include: py_01
 
     en_mayusculas = mi_string.upper()
 
@@ -102,7 +105,8 @@ Pero más allá de las clases estándares que nos provee Python, también
 podemos crear nuestras propias clases. Y para eso usamos la palabra
 reservada *class*.
 
-.. code:: python
+.. activecode:: py_03
+    :nocodelens:
 
     class Mesa(object):
         pass
@@ -110,7 +114,8 @@ reservada *class*.
 Ahora, esa mesa puede tener distintas características, como pueden ser
 la cantidad de patas, el color o el material del que están hechas:
 
-.. code:: python
+.. activecode:: py_04
+    :nocodelens:
 
     class Mesa(object):
         cantidad_de_patas = None
@@ -122,7 +127,8 @@ esas características:
 
 .. |image0| image:: mesas.png
 
-.. code:: python
+.. activecode:: py_05
+    :nocodelens:
 
     class Mesa(object):
         cantidad_de_patas = None
@@ -134,7 +140,10 @@ esas características:
     mi_mesa.color = 'Marrón'
     mi_mesa.material = 'Madera'
     
-    print 'Tendo una mesa de {0.cantidad_de_patas} patas de color {0.color} y esta hecha de {0.material}'.format(mi_mesa)
+    print('Tendo una mesa de {0} patas de color {1} y esta hecha de {2}'.format(
+            mi_mesa.cantidad_de_patas,
+            mi_mesa.color,
+            mi_mesa.material))
 
 
 .. parsed-literal::
@@ -146,7 +155,8 @@ Ahora, si siempre voy a tener que definir esas características de la
 mesa para poder usarla, lo más cómodo es definir el método ``__init__``
 que sirve para inicializar el objeto:
 
-.. code:: python
+.. activecode:: py_06
+    :nocodelens:
 
     class Mesa(object):
         cantidad_de_patas = None
@@ -160,7 +170,10 @@ que sirve para inicializar el objeto:
         
     mi_mesa = Mesa(4, 'Marrón', 'Madera')
     
-    print 'Tendo una mesa de {0.cantidad_de_patas} patas de color {0.color} y esta hecha de {0.material}'.format(mi_mesa)
+    print('Tendo una mesa de {0} patas de color {1} y esta hecha de {2}'.format(
+            mi_mesa.cantidad_de_patas,
+            mi_mesa.color,
+            mi_mesa.material))
 
 
 .. parsed-literal::
@@ -180,7 +193,8 @@ automáticamente. No tiene que hacerlo uno mismo. Así como este objeto
 esta compuesto por tres objetos estándar de Python (un *int* y dos
 *str*), también podría estar compuesto por objetos creados por nosotros:
 
-.. code:: python
+.. activecode:: py_07
+    :nocodelens:
 
     class TablaRectangular(object):
         base = None
@@ -222,7 +236,8 @@ Y como dijimos antes, una objeto no sólo agrupa sus características,
 sino también los métodos que nos permiten trabajar con él, como por
 ejemplo, podría ser calcular su superficie de apoyo:
 
-.. code:: python
+.. activecode:: py_08
+    :nocodelens:
 
     import math
     
@@ -272,7 +287,7 @@ ejemplo, podría ser calcular su superficie de apoyo:
     mi_mesa = Mesa(tabla, [pata_1, pata_2, pata_3, pata_4])
     
     sup = mi_mesa.obtener_superficie_de_apoyo()
-    print 'La superficie de la mesa es {} cm2'.format(sup)
+    print('La superficie de la mesa es {} cm2'.format(sup))
 
 
 .. parsed-literal::
@@ -291,7 +306,8 @@ cualquiera de sus patas o a la tabla, pero sabía a quién tenía que
 preguntarselo. Y no importa si es una tabla redonda o rectangular, las
 dos clases saben cómo responder la pregunta de ``calcular_superficie``.
 
-.. code:: python
+.. activecode:: py_09
+    :nocodelens:
 
         def obtener_superficie_de_apoyo(self):
             return self.tabla.calcular_superficie()
@@ -302,7 +318,8 @@ Otro ejemplo
 Volviendo un poco al ejemplo planteado antes de querer modelar una
 materia, podríamos implementar los alumnos de la siguiente manera:
 
-.. code:: python
+.. activecode:: py_10
+    :nocodelens:
 
 
     class Alumno(object):
@@ -347,7 +364,9 @@ Después, para usa estas variables sólo es necesario definir una variable
 de la clase ``Alumno`` pasandole los parametros necesarios para poder
 inicializarlo:
 
-.. code:: python
+.. activecode:: py_01
+    :nocodelens:
+    :include: py_10
 
     alum = Alumno(12345, 'Juan', 'Perez')
     alum.rendir_parcial(2)
@@ -356,11 +375,12 @@ inicializarlo:
     alum.entregar_trabajo_practico(9)
 
     if alum.puede_rendir_coloquio():
-        print 'El alumno puede rendir coloquio'
+        print('El alumno puede rendir coloquio')
     else:
-        print 'El alumno no puede rendor coloquio'
+        print('El alumno no puede rendor coloquio')
 
-.. code:: python
+.. activecode:: py_11
+    :nocodelens:
 
     class Alumno(object):
     
@@ -407,17 +427,17 @@ inicializarlo:
     alum.entregar_trabajo_practico(9)
     
     if alum.puede_rendir_coloquio():
-        print 'El alumno puede rendir coloquio'
+        print('El alumno puede rendir coloquio')
     else:
-        print 'El alumno no puede rendor coloquio'
+        print('El alumno no puede rendor coloquio')
     
-    print '¿Y si después rinde el parcial y se saca un 7?'
+    print('¿Y si después rinde el parcial y se saca un 7?')
     alum.rendir_parcial(7)
     
     if alum.puede_rendir_coloquio():
-        print 'El alumno puede rendir coloquio'
+        print('El alumno puede rendir coloquio')
     else:
-        print 'El alumno no puede rendor coloquio'
+        print('El alumno no puede rendor coloquio')
 
 
 .. parsed-literal::
