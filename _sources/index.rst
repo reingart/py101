@@ -60,14 +60,20 @@ Repositorio: https://github.com/reingart/py101
 .. toctree::
       :maxdepth: 3
 
-      clase04.rst
+      4/ordenamiento.rst
+      4/busquedas.rst
+      4/ejercicios.rst
 
-5. Manejo de strings
+5. Archivos de texto
 ::::::::::::::::::::
+
 .. toctree::
       :maxdepth: 3
 
-      clase05.rst
+      5/manejo_strings.rst
+      5/archivos_texto.rst
+      5/ejercicios.rst
+
 
 6. Programación Orientada a Objetos
 :::::::::::::::::::::::::::::::::::
@@ -75,8 +81,8 @@ Repositorio: https://github.com/reingart/py101
 .. toctree::
       :maxdepth: 3
 
-      clase09.rst
-      clase10.rst
+      6/objetos.rst
+      6/clases.rst
 
 7. Excepciones y Pruebas Unitarias
 ::::::::::::::::::::::::::::::::::
@@ -84,20 +90,27 @@ Repositorio: https://github.com/reingart/py101
 .. toctree::
       :maxdepth: 3
 
-      clase07.rst
+      7/excepciones.rst
+      7/pruebas_unitarias.rst
 
-8. Archivos
-::::::::::
+8. Archivos binarios
+::::::::::::::::::::
 .. toctree::
       :maxdepth: 3
 
-      clase06.rst
+      8/procesamiento_de_archivos.rst
+      8/pickles.rst
+      8/apareo_de_archivos_secuenciales.rst
+      8/cortes_de_control.rst
+      8/novedades.rst
+      8/ejercicios.rst
 
-9. Pilas, Colas, Listas y Generadores
-:::::::::::::::::::::::::::::::::::::
+9. Estructuras de Datos
+:::::::::::::::::::::::
 .. toctree::
       :maxdepth: 3
 
-      clase11.rst
-      clase12.rst
+      9/estructuras_de_datos.rst
+      9/listas_vs_generadores.rst
+      9/recursividad.rst
 

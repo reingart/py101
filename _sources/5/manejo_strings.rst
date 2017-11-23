@@ -305,14 +305,4 @@ que pasaron a ocupar 2 bytes, por lo que ahora se pueden representar
 65.536 todos los caracteres necesarios. En Python 3 todos los strings
 pasaron a ser del tipo Unicode.
 
-Ejercicios
-==========
 
-1.  un texto al usuario y mostrar el mismo texto pero sin las vocales.
-    Por ejemplo, para un input de "Yo estaba allí", debería mostrar "Y
-    stb ll".
-2.  Escribir un procedimiento o función que, dada una palabra, determine
-    si es capicúa o no.
-3.  Hacer una función que reciba un texto y devuelva el mismo texto pero
-    con cada palabra invertida. Por ejemplo, llamándola con "Esto es una
-    prueba", debe devolver "otsE se anu abeurp"
