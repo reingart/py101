@@ -46,6 +46,34 @@ usar las funciones
     print(resultado)
 
 
+.. activecode:: py_03
+    :nocodelens:
+    :hidecode:
+
+    import random
+    
+    def crear_alumnos(cantidad_de_alumnos=5):
+        nombres = ['Javier', 'Pablo', 'Ramiro', 'Lucas', 'Carlos']
+        apellidos = ['Saviola', 'Aimar', 'Funes Mori', 'Alario', 
+                     'Sanchez']
+    
+        alumnos = []
+        for i in range(cantidad_de_alumnos):
+            a = {
+                'nombre': '{}, {}'.format(
+                    random.choice(apellidos), random.choice(nombres)),
+                'padron': random.randint(90000, 100000),
+                'nota': random.randint(4, 10)
+            }
+            alumnos.append(a)
+        
+        return alumnos
+
+    def imprimir_curso(lista):
+        for idx, x in enumerate(lista, 1):
+            print('    {pos:2}. {padron} - {nombre}: {nota}'.format(
+                pos=idx, **x))
+        
 
 
 Si bien no son funciones que se usen todos los días, se suelen usar
@@ -58,7 +86,9 @@ alumnos por padrón podríamos usar:
     :nocodelens:
     :include: py_03
 
-    sorted(curso, key=lambda x: x['padron'])
+    curso = crear_alumnos()
+    lista_ordenada = sorted(curso, key=lambda x: x['padron'])
+    imprimir_curso(lista_ordenada)
 
 Ahora, si quiero ordenar la lista anterior por nota decreciente y, en
 caso de igualdad, por padrón podríamos usar:
